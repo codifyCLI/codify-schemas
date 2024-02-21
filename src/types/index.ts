@@ -53,8 +53,8 @@ export interface PlanResponseData {
   parameters: Array<{
     name: string;
     operation: ParameterOperation;
-    previousValue: string | null;
-    newValue: string | null;
+    previousValue: unknown | null;
+    newValue: unknown | null;
   }>
 }
 
