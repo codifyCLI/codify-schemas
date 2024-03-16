@@ -1,8 +1,8 @@
 import Ajv2020 from "ajv/dist/2020";
 import schema from './get-resources-response-data-schema.json';
 import resourceSchema from '../resource-schema.json'
-import {it} from "mocha";
-import assert from "node:assert";
+import { describe, it, expect } from 'vitest'
+
 
 const ajv = new Ajv2020({
   strict: true,
@@ -16,7 +16,7 @@ describe('Get resources response data schema', () => {
 
   it("requires a type field to be specified", () => {
     const validate = ajv.compile(schema);
-    assert.equal(validate({ resources: [
+    expect(validate({ resources: [
         {
           type: "typeA",
           dependencies: [
@@ -26,8 +26,9 @@ describe('Get resources response data schema', () => {
         {
           type: "typeB"
         }
-    ]}), true)
-    assert.equal(validate({
+    ]})).to.be.true;
+
+    expect(validate({
       resources: [
         {
           type: "typeA",
@@ -37,7 +38,7 @@ describe('Get resources response data schema', () => {
         },
         {}
       ]
-    }), false)
+    })).to.be.false;
   })
 
 })

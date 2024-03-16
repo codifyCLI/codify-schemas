@@ -1,8 +1,7 @@
 import Ajv2020 from "ajv/dist/2020";
-import { describe, it } from 'mocha';
 import schema from './resource-meta-schema.json';
 import resourceSchema from './resource-schema.json';
-import assert from "node:assert";
+import { describe, it, expect } from 'vitest'
 
 const ajv = new Ajv2020({
    strict: true,
@@ -16,7 +15,7 @@ describe("Resource meta schema tests", () => {
    it("must have additional properties and $ref to resource-schema specified", () => {
       const validate = ajv.compile(schema);
 
-      assert.equal(validate({
+      expect(validate({
          "$schema": "https://json-schema.org/draft/2020-12/schema",
          "type": "object",
          "properties": {
@@ -24,9 +23,9 @@ describe("Resource meta schema tests", () => {
                "type": "string"
             }
          }
-      }), false);
+      })).to.be.false;
 
-      assert.equal(validate({
+      expect(validate({
          "$schema": "https://json-schema.org/draft/2020-12/schema",
          "type": "object",
          "properties": {
@@ -34,15 +33,15 @@ describe("Resource meta schema tests", () => {
                "type": "string"
             }
          },
-         "additionalProperties": false,
+         "unevaluatedProperties": false,
          "$ref": "https://www.codify.com/resource-schema.json"
-      }), true);
+      })).to.be.true;
    })
 
    it("does not allow resource keywords to be specified", () => {
       const validate = ajv.compile(schema);
 
-      assert.equal(validate({
+      expect(validate({
          "$schema": "https://json-schema.org/draft/2020-12/schema",
          "type": "object",
          "properties": {
@@ -50,11 +49,11 @@ describe("Resource meta schema tests", () => {
                "type": "string"
             }
          },
-         "additionalProperties": false,
+         "unevaluatedProperties": false,
          "$ref": "https://www.codify.com/resource-schema.json"
-      }), false);
+      })).to.be.false;
 
-      assert.equal(validate({
+      expect(validate({
          "$schema": "https://json-schema.org/draft/2020-12/schema",
          "type": "object",
          "properties": {
@@ -62,11 +61,11 @@ describe("Resource meta schema tests", () => {
                "type": "string"
             }
          },
-         "additionalProperties": false,
+         "unevaluatedProperties": false,
          "$ref": "https://www.codify.com/resource-schema.json"
-      }), false);
+      })).to.be.false;
 
-      assert.equal(validate({
+      expect(validate({
          "$schema": "https://json-schema.org/draft/2020-12/schema",
          "type": "object",
          "properties": {
@@ -74,9 +73,9 @@ describe("Resource meta schema tests", () => {
                "type": "array"
             }
          },
-         "additionalProperties": false,
+         "unevaluatedProperties": false,
          "$ref": "https://www.codify.com/resource-schema.json"
-      }), false);
+      })).to.be.false;
    })
 
    it("allows for schema composition with base resource schema", () => {
@@ -112,10 +111,10 @@ describe("Resource meta schema tests", () => {
       });
 
       const metaSchemaValidator = ajv.compile(resourceMetaSchema);
-      assert.equal(metaSchemaValidator(propertySchema), true)
+      expect(metaSchemaValidator(propertySchema)).to.be.true;
 
       const resourceValidator = ajv.compile(propertySchema);
-      assert.equal(resourceValidator(resourceConfigValid), true);
-      assert.equal(resourceValidator(resourceConfigInvalid), false);
+      expect(resourceValidator(resourceConfigValid)).to.be.true;
+      expect(resourceValidator(resourceConfigInvalid)).to.be.false;
    })
 });

@@ -1,8 +1,7 @@
 import Ajv2020 from "ajv/dist/2020";
 import schema from './plan-request-data-schema.json';
 import resourceSchema from '../resource-schema.json'
-import {it} from "mocha";
-import assert from "node:assert";
+import { describe, it, expect } from 'vitest'
 
 const ajv = new Ajv2020({
   strict: true,
@@ -16,19 +15,19 @@ describe('Plan request data schema', () => {
 
   it("requires a type field to be specified", () => {
     const validate = ajv.compile(schema);
-    assert.equal(validate({ type: "type" }), true)
-    assert.equal(validate({}), false)
+    expect(validate({ type: "type" })).to.be.true;
+    expect(validate({})).to.be.false;
   })
 
   it ("name and type are alpha-numeric and follow variable naming conventions", () => {
     const validate = ajv.compile(schema);
-    assert.equal(validate({ type: "a234abcDEF_-"}), true)
-    assert.equal(validate({ type: "234"}), false);
-    assert.equal(validate({ type: "ABCDEF$"}), false);
+    expect(validate({ type: "a234abcDEF_-"})).to.be.true;
+    expect(validate({ type: "234"})).to.be.false;
+    expect(validate({ type: "ABCDEF$"})).to.be.false;
 
-    assert.equal(validate({ type: "type", name: "a234abcDEF_-"}), true)
-    assert.equal(validate({ type: "type", name: "234"}), false);
-    assert.equal(validate({ type: "type", name: "ABCDEF$"}), false);
+    expect(validate({ type: "type", name: "a234abcDEF_-"})).to.be.true;
+    expect(validate({ type: "type", name: "234"})).to.be.false;
+    expect(validate({ type: "type", name: "ABCDEF$"})).to.be.false;
   });
 
 })
