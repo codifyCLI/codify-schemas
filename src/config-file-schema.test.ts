@@ -1,9 +1,9 @@
 import configSchema from './config-file-schema.json';
 import resourceSchema from './resource-schema.json';
 import { describe, it, expect } from 'vitest'
-import Ajv from "ajv";
+import Ajv2020 from 'ajv/dist/2020.js'
 
-const ajv = new Ajv({
+const ajv = new Ajv2020.default({
   strict: true,
 })
 ajv.addSchema(resourceSchema);

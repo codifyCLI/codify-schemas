@@ -1,12 +1,49 @@
-export { default as ConfigFileSchema } from './config-file-schema.json';
-export { default as ProjectSchema } from './project-schema.json';
-export { default as ResourceSchema } from './resource-schema.json';
-export { default as IpcMessageSchema } from './ipc-message-schema.json';
-export { default as ApplyRequestDataSchema } from './messages/apply-request-data-schema.json';
-export { default as ApplyResponseDataSchema } from './messages/apply-response-data-schema.json'
-export { default as ErrorResponseDataSchema } from './messages/error-response-data-schema.json';
-export { default as PlanRequestDataSchema } from './messages/plan-request-data-schema.json';
-export { default as PlanResponseDataSchema } from './messages/plan-response-data-schema.json';
-export { default as ValidateRequestDataSchema } from './messages/validate-request-data-schema.json';
-export { default as ValidateResponseDataSchema } from './messages/validate-response-data-schema.json';
-export type * from './types/index.js';
+const ConfigFileSchema = await import('./config-file-schema.json', {
+  assert: { type: 'json'}
+})
+const ProjectSchema = await import('./project-schema.json', {
+  assert: { type: 'json'}
+})
+const ResourceSchema = await import('./resource-schema.json', {
+  assert: { type: 'json'}
+})
+const IpcMessageSchema = await import('./ipc-message-schema.json', {
+  assert: { type: 'json'}
+})
+const ApplyRequestDataSchema = await import('./messages/apply-request-data-schema.json', {
+  assert: { type: 'json'}
+})
+const ApplyResponseDataSchema = await import('./messages/apply-response-data-schema.json', {
+  assert: { type: 'json'}
+})
+const ErrorResponseDataSchema = await import('./messages/error-response-data-schema.json', {
+  assert: { type: 'json'}
+})
+const PlanRequestDataSchema = await import('./messages/plan-request-data-schema.json', {
+  assert: { type: 'json'}
+})
+const PlanResponseDataSchema = await import('./messages/plan-response-data-schema.json', {
+  assert: { type: 'json'}
+})
+const ValidateRequestDataSchema = await import('./messages/validate-request-data-schema.json', {
+  assert: { type: 'json'}
+})
+const ValidateResponseDataSchema = await import('./messages/validate-response-data-schema.json', {
+  assert: { type: 'json'}
+})
+
+export {
+  ConfigFileSchema,
+  ProjectSchema,
+  ResourceSchema,
+  IpcMessageSchema,
+  ApplyRequestDataSchema,
+  ApplyResponseDataSchema,
+  ErrorResponseDataSchema,
+  PlanRequestDataSchema,
+  PlanResponseDataSchema,
+  ValidateRequestDataSchema,
+  ValidateResponseDataSchema,
+}
+
+export * from './types/index.js';
