@@ -30,7 +30,7 @@ export interface ValidateRequestData {
 
 export interface ValidateResponseData {
   isValid: boolean;
-  errors: unknown[];
+  errors: unknown[] | null;
 }
 
 export interface PlanRequestData extends ResourceConfig {}

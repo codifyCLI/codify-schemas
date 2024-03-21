@@ -13,25 +13,29 @@ describe('Get resources response data schema', () => {
 
   it("requires type and dependencies to be defined", () => {
     const validate = ajv.compile(schema);
-    expect(validate([
-      {
-        type: 'typeA',
-        dependencies: ['typeB']
-      },
-      {
-        type: 'typeB',
-        dependencies: [],
-      }
-    ])).to.be.true;
+    expect(validate({
+      resourceDefinitions: [
+        {
+          type: 'typeA',
+          dependencies: ['typeB']
+        },
+        {
+          type: 'typeB',
+          dependencies: [],
+        }
+      ]
+    })).to.be.true;
 
-    expect(validate([
-      {
-        dependencies: ['typeB']
-      },
-      {
-        type: 'typeB',
-      }
-    ])).to.be.false;
+    expect(validate({
+      resourceDefinitions: [
+        {
+          dependencies: ['typeB']
+        },
+        {
+          type: 'typeB',
+        }
+      ]
+    })).to.be.false;
   });
 
 })
