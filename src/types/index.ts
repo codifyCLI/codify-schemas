@@ -1,12 +1,14 @@
-export interface ProjectConfig {
+export interface Config {
   type: string;
+}
+
+export interface ProjectConfig extends Config {
   version?: string;
   plugins?: Record<string, string>;
   description?: string;
 }
 
-export interface ResourceConfig {
-  type: string;
+export interface ResourceConfig extends Config {
   name?: string;
   dependsOn?: string[];
 }
@@ -60,4 +62,9 @@ export interface PlanResponseData {
 
 export interface ApplyRequestData {
   planId: string;
+}
+
+export interface ResourceDefinition {
+  type: string;
+  dependencies: string[];
 }
