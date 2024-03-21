@@ -28,7 +28,10 @@ export interface ValidateRequestData {
   configs: ResourceConfig[];
 }
 
-export type ValidateResponseData = null;
+export interface ValidateResponseData {
+  isValid: boolean;
+  errors: unknown[];
+}
 
 export interface PlanRequestData extends ResourceConfig {}
 
@@ -65,6 +68,13 @@ export interface ApplyRequestData {
 }
 
 export interface ResourceDefinition {
+  type: string;
+  dependencies: string[];
+}
+
+export interface InitializeRequestData {}
+
+export interface InitializeResponseData {
   type: string;
   dependencies: string[];
 }

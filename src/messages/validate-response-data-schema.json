@@ -2,5 +2,16 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://www.codify.com/validate-response-data-schema.json",
   "title": "Validate Response Schema Data",
-  "type": "null"
+  "type": "object",
+  "properties": {
+    "isValid": {
+      "type": "boolean"
+    },
+    "errors": {
+      "type": "array",
+      "description": "Any errors in validation"
+    }
+  },
+  "required": ["isValid"],
+  "additionalProperties": false
 }
