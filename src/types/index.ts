@@ -75,6 +75,8 @@ export interface ResourceDefinition {
 export interface InitializeRequestData {}
 
 export interface InitializeResponseData {
-  type: string;
-  dependencies: string[];
+  resourceDefinitions: Array<{
+    type: string;
+    dependencies: string[];
+  }>;
 }
