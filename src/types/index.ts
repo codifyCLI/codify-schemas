@@ -64,7 +64,18 @@ export interface PlanResponseData {
 }
 
 export interface ApplyRequestData {
-  planId: string;
+  planId?: string;
+  plan?: {
+    operation: ResourceOperation;
+    resourceName?: string;
+    resourceType: string;
+    parameters: Array<{
+      name: string;
+      operation: ParameterOperation;
+      previousValue: unknown | null;
+      newValue: unknown | null;
+    }>
+  }
 }
 
 export interface ResourceDefinition {

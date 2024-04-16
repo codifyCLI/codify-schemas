@@ -1,0 +1,42 @@
+import schema from './plan-response-data-schema.json';
+import resourceSchema from '../resource-schema.json'
+import {describe, expect, it} from 'vitest'
+import Ajv2020 from 'ajv/dist/2020.js'
+import addFormats from 'ajv-formats';
+import {ParameterOperation, PlanResponseData, ResourceOperation} from "../types/index.js";
+
+const ajv = new Ajv2020.default({
+  strict: true,
+})
+addFormats.default(ajv);
+ajv.addSchema(resourceSchema);
+
+describe('Plan response data schema', () => {
+  it('compiles', () => {
+    ajv.compile(schema);
+  })
+
+  it("validates correct config", () => {
+    const validate = ajv.compile(schema);
+    expect(validate({
+      planId: 'eb367e53-21a8-4c9e-a38b-c99e7c821344',
+      operation: ResourceOperation.CREATE,
+      resourceType: 'type1',
+      parameters: [{
+        name: 'parameter1',
+        operation: ParameterOperation.ADD,
+        previousValue: null,
+        newValue: 'abc'
+      }]
+    } as PlanResponseData)).to.be.true;
+  })
+
+  it ("validates incorrect config", () => {
+    const validate = ajv.compile(schema);
+    expect(validate({
+      planId: 'eb367e53-21a8-4c9e-a38b-c99e7c821344',
+      parameters: []
+    })).to.be.false;
+  });
+
+})
