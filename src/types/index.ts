@@ -72,7 +72,6 @@ export interface ApplyRequestData {
     parameters: Array<{
       name: string;
       operation: ParameterOperation;
-      previousValue: unknown | null;
       newValue: unknown | null;
     }>
   }

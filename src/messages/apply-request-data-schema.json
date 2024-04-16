@@ -47,9 +47,6 @@
                   "noop"
                 ]
               },
-              "previousValue": {
-                "description": "The value before the change"
-              },
               "newValue": {
                 "description": "The new value"
               }
@@ -57,7 +54,6 @@
             "required": [
               "name",
               "operation",
-              "previousValue",
               "newValue"
             ]
           }

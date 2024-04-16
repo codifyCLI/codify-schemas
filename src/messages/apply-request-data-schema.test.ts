@@ -32,7 +32,6 @@ describe('Apply request data schema', () => {
         parameters: [{
           name: 'parameter1',
           operation: ParameterOperation.ADD,
-          previousValue: null,
           newValue: 'abc'
         }]
       }
