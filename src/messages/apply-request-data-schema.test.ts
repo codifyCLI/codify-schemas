@@ -32,7 +32,24 @@ describe('Apply request data schema', () => {
         parameters: [{
           name: 'parameter1',
           operation: ParameterOperation.ADD,
-          newValue: 'abc'
+          newValue: 'abc',
+          previousValue: null,
+        }]
+      }
+    } as ApplyRequestData)).to.be.true;
+  })
+
+  it("validates correct empty config (plan)", () => {
+    const validate = ajv.compile(schema);
+    expect(validate({
+      plan: {
+        operation: ResourceOperation.CREATE,
+        resourceType: 'type1',
+        parameters: [{
+          name: 'parameter1',
+          operation: ParameterOperation.NOOP,
+          newValue: null,
+          previousValue: null,
         }]
       }
     } as ApplyRequestData)).to.be.true;

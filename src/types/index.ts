@@ -1,4 +1,8 @@
-export interface Config {
+export interface StringIndexedObject {
+  [x: string]: unknown;
+}
+
+export interface Config extends StringIndexedObject {
   type: string;
 }
 
@@ -28,9 +32,15 @@ export interface ValidateRequestData {
   configs: ResourceConfig[];
 }
 
-export interface ValidateResponseData {
+export interface ValidationResult {
+  resourceType: string;
+  resourceName?: string;
   isValid: boolean;
-  errors: unknown[] | null;
+  errors?: unknown[] | null;
+}
+
+export interface ValidateResponseData {
+  validationResults: Array<ValidationResult>;
 }
 
 export interface PlanRequestData extends ResourceConfig {}
@@ -73,6 +83,7 @@ export interface ApplyRequestData {
       name: string;
       operation: ParameterOperation;
       newValue: unknown | null;
+      previousValue: unknown | null;
     }>
   }
 }

@@ -49,12 +49,16 @@
               },
               "newValue": {
                 "description": "The new value"
+              },
+              "previousValue": {
+                "description": "The new value"
               }
             },
             "required": [
               "name",
               "operation",
-              "newValue"
+              "newValue",
+              "previousValue"
             ]
           }
         }
