@@ -4,68 +4,78 @@
   "title": "Apply Request Schema Data",
   "description": "Apply the previously generated plan. The plan must already be generated in order for apply to work.",
   "type": "object",
-  "properties": {
-    "planId": {
-      "description": "The plan uuid. This id is used to look up the generated plan on the plugin side.",
-      "type": "string",
-      "format": "uuid"
-    },
-    "plan": {
-      "description": "Alternatively, the client can supply a complete plan instead of a planId",
-      "type": "object",
+  "anyOf": [
+    {
       "properties": {
-        "operation": {
-          "description": "The plan operation",
+        "planId": {
+          "description": "The plan uuid. This id is used to look up the generated plan on the plugin side.",
           "type": "string",
-          "enum" : ["create", "destroy", "modify", "recreate", "noop"]
-        },
-        "resourceType": {
-          "description": "The resource type",
-          "type": "string"
-        },
-        "resourceName": {
-          "description": "The resource name",
-          "type": ["string", "null"]
-        },
-        "parameters": {
-          "description": "The properties come from the provided config and is not necessarily every parameter on the ",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "description": "The property name",
-                "type": "string"
-              },
-              "operation": {
-                "description": "The operation to be performed on the parameter",
-                "type": "string",
-                "enum": [
-                  "remove",
-                  "add",
-                  "modify",
-                  "noop"
-                ]
-              },
-              "newValue": {
-                "description": "The new value"
-              },
-              "previousValue": {
-                "description": "The new value"
-              }
-            },
-            "required": [
-              "name",
-              "operation",
-              "newValue",
-              "previousValue"
-            ]
-          }
+          "format": "uuid"
         }
       },
-      "required": ["operation", "resourceType", "parameters"]
+      "required": ["planId"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "plan": {
+          "description": "Alternatively, the client can supply a complete plan instead of a planId",
+          "type": "object",
+          "properties": {
+            "operation": {
+              "description": "The plan operation",
+              "type": "string",
+              "enum" : ["create", "destroy", "modify", "recreate", "noop"]
+            },
+            "resourceType": {
+              "description": "The resource type",
+              "type": "string"
+            },
+            "resourceName": {
+              "description": "The resource name",
+              "type": ["string", "null"]
+            },
+            "parameters": {
+              "description": "The properties come from the provided config and is not necessarily every parameter on the ",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "The property name",
+                    "type": "string"
+                  },
+                  "operation": {
+                    "description": "The operation to be performed on the parameter",
+                    "type": "string",
+                    "enum": [
+                      "remove",
+                      "add",
+                      "modify",
+                      "noop"
+                    ]
+                  },
+                  "newValue": {
+                    "description": "The new value"
+                  },
+                  "previousValue": {
+                    "description": "The new value"
+                  }
+                },
+                "required": [
+                  "name",
+                  "operation",
+                  "newValue",
+                  "previousValue"
+                ]
+              }
+            }
+          },
+          "required": ["operation", "resourceType", "parameters"]
+        }
+      },
+      "required": ["plan"],
+      "additionalProperties": false
     }
-  },
-  "required": [],
-  "additionalProperties": false
+  ]
 }

@@ -32,15 +32,13 @@ export interface ValidateRequestData {
   configs: ResourceConfig[];
 }
 
-export interface ValidationResult {
-  resourceType: string;
-  resourceName?: string;
-  isValid: boolean;
-  errors?: unknown[] | null;
-}
-
 export interface ValidateResponseData {
-  validationResults: Array<ValidationResult>;
+  validationResults: Array<{
+    resourceType: string;
+    resourceName?: string;
+    isValid: boolean;
+    errors?: unknown[] | null;
+  }>;
 }
 
 export interface PlanRequestData extends ResourceConfig {}

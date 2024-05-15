@@ -39,7 +39,7 @@ describe('Apply request data schema', () => {
     } as ApplyRequestData)).to.be.true;
   })
 
-  it("validates correct empty config (plan)", () => {
+  it("validates correct no-op config (plan)", () => {
     const validate = ajv.compile(schema);
     expect(validate({
       plan: {
@@ -54,4 +54,27 @@ describe('Apply request data schema', () => {
       }
     } as ApplyRequestData)).to.be.true;
   })
+
+  it("validates errors on empty body", () => {
+    const validate = ajv.compile(schema);
+    expect(validate({
+    } as ApplyRequestData)).to.be.false;
+  });
+
+  it("validates errors when both plan and planId are defined", () => {
+    const validate = ajv.compile(schema);
+    expect(validate({
+      planId: 'eb367e53-21a8-4c9e-a38b-c99e7c821344',
+      plan: {
+        operation: ResourceOperation.CREATE,
+        resourceType: 'type1',
+        parameters: [{
+          name: 'parameter1',
+          operation: ParameterOperation.ADD,
+          newValue: 'abc',
+          previousValue: null,
+        }]
+      }
+    } as ApplyRequestData)).to.be.false;
+  });
 })
