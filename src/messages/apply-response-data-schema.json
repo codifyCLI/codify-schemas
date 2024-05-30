@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://www.codify.com/apply-response-data-schema.json",
+  "$id": "https://www.codifycli.com/apply-response-data-schema.json",
   "title": "Apply Response Schema Data",
   "type": "null"
 }

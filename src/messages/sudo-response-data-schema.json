@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.codifycli.com/sudo-request-response.json",
+  "title": "Sudo request response",
+  "description": "Response for a sudo request",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}

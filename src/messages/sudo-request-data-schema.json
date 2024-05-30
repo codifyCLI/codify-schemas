@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.codifycli.com/sudo-request.json",
+  "title": "Sudo request",
+  "description": "Request sudo from the core CLI",
+  "type": "object",
+  "properties": {
+    "command": {
+      "type": "string",
+      "description": "The command that is requesting sudo"
+    }
+  },
+  "required": ["command"],
+  "additionalProperties": false
+}

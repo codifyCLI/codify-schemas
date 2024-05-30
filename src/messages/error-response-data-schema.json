@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://www.codify.com/error-response-data-schema.json",
+  "$id": "https://www.codifycli.com/error-response-data-schema.json",
   "title": "Error Response Schema Data",
   "type": "object",
   "properties": {

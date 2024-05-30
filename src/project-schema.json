@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://www.codify.com/project-schema.json",
+  "$id": "https://www.codifycli.com/project-schema.json",
   "title": "Project Schema",
   "type": "object",
   "properties": {

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://www.codify.com/plan-response-data-schema.json",
+  "$id": "https://www.codifycli.com/plan-response-data-schema.json",
   "title": "Plan Response Schema Data",
   "type": "object",
   "properties": {

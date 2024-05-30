@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://www.codify.com/ipc-message-schema.json",
+  "$id": "https://www.codifycli.com/ipc-message-schema.json",
   "title": "IPC Message Schema",
   "type": "object",
   "properties": {
