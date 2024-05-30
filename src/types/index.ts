@@ -99,3 +99,9 @@ export interface InitializeResponseData {
     dependencies: string[];
   }>;
 }
+
+export interface SudoRequestData {
+  command: string;
+}
+
+export interface SudoRequestResponseData {}

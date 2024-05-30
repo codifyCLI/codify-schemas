@@ -1,0 +1,7 @@
+export enum MessageCmd {
+  INITIALIZE = 'initialize',
+  VALIDATE = 'validate',
+  PLAN = 'plan',
+  APPLY = 'apply',
+  SUDO_REQUEST = 'sudo_request'
+}
