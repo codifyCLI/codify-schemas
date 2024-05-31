@@ -11,11 +11,43 @@ describe('Get resources response data schema', () => {
     ajv.compile(schema);
   })
 
-  it("requires an empty object", () => {
+  it("Passes a command in the body", () => {
     const validate = ajv.compile(schema);
     expect(validate({
       command: 'abc def'
     })).to.be.true;
   })
 
+  it("Allows options to be set for the command", () => {
+    const validate = ajv.compile(schema);
+    expect(validate({
+      command: 'abc def',
+      options: {
+        cwd: '.',
+      }
+    })).to.be.true;
+  })
+
+  it("Allows additional options to be set for options", () => {
+    const validate = ajv.compile(schema);
+    expect(validate({
+      command: 'abc def',
+      options: {
+        cwd: '.',
+        requiresRoot: true,
+        throws: false,
+      }
+    })).to.be.true;
+  })
+
+  it("Prevent additional options to be set for the top level object", () => {
+    const validate = ajv.compile(schema);
+    expect(validate({
+      command: 'abc def',
+      options: {
+        cwd: '.',
+      },
+      additional: {}
+    })).to.be.false;
+  })
 })

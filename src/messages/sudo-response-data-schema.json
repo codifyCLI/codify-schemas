@@ -4,6 +4,16 @@
   "title": "Sudo request response",
   "description": "Response for a sudo request",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "status": {
+      "enum": ["success", "error"],
+      "description": "Reports if the operation was successful"
+    },
+    "data": {
+      "type": "string",
+      "description": "Data returned by the operation"
+    }
+  },
+  "required": ["status", "data"],
   "additionalProperties": false
 }

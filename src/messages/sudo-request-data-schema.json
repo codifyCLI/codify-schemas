@@ -8,6 +8,21 @@
     "command": {
       "type": "string",
       "description": "The command that is requesting sudo"
+    },
+    "options": {
+      "type": "object",
+      "description": "The options for codifySpawn that is needed to run the command",
+      "properties": {
+        "cwd": {
+          "type": "string",
+          "description": "Current working directory to run codifySpawn in"
+        },
+        "argv0": {
+          "type": "string",
+          "description": "Arguments to pass in"
+        }
+      },
+      "additionalProperties": true
     }
   },
   "required": ["command"],

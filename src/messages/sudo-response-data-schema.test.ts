@@ -1,4 +1,4 @@
-import schema from './sudo-request-data-schema.json';
+import schema from './sudo-response-data-schema.json';
 import {describe, expect, it} from 'vitest'
 import Ajv2020 from 'ajv/dist/2020.js'
 
@@ -11,11 +11,19 @@ describe('Get resources response data schema', () => {
     ajv.compile(schema);
   })
 
-  it("requires an empty object", () => {
+  it("Validates a successful sudo request response", () => {
     const validate = ajv.compile(schema);
     expect(validate({
-      command: 'abc def'
+      status: 'success',
+      data: 'sudo: was a success'
     })).to.be.true;
   })
 
+  it("Validates a sudo request error response", () => {
+    const validate = ajv.compile(schema);
+    expect(validate({
+      status: 'error',
+      data: 'sudo: failed'
+    })).to.be.true;
+  })
 })

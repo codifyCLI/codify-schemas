@@ -1,3 +1,5 @@
+import {SpawnOptions} from "node:child_process";
+
 export interface StringIndexedObject {
   [x: string]: unknown;
 }
@@ -102,6 +104,17 @@ export interface InitializeResponseData {
 
 export interface SudoRequestData {
   command: string;
+  options: {
+    cwd?: string;
+  } & Omit<SpawnOptions, 'stdio' | 'shell' | 'detached'>
 }
 
-export interface SudoRequestResponseData {}
+export enum SpawnStatus {
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
+export interface SudoRequestResponseData {
+  status: SpawnStatus,
+  data: string;
+}

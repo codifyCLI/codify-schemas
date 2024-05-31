@@ -12,8 +12,8 @@ import ValidateRequestDataSchema from './messages/validate-request-data-schema.j
 import ValidateResponseDataSchema from './messages/validate-response-data-schema.json' assert {type: 'json'}
 import InitializeRequestDataSchema from './messages/initialize-request-data-schema.json' assert {type: 'json'}
 import InitializeResponseDataSchema from './messages/initialize-response-data-schema.json' assert {type: 'json'}
-import SudoRequestDataSchema from './messages/sudo-request-data-schema.json';
-import SudoRequestResponseDataSchema from './messages/sudo-response-data-schema.json';
+import SudoRequestDataSchema from './messages/sudo-request-data-schema.json' assert {type: 'json'};
+import SudoRequestResponseDataSchema from './messages/sudo-response-data-schema.json' assert {type: 'json'};
 
 export {
   ConfigFileSchema,
