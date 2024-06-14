@@ -24,7 +24,8 @@ describe("Resource schema tests", () => {
       expect(validate({ type: "ABCDEF$"})).to.be.false;
 
       expect(validate({ type: "type", name: "a234abcDEF_-"})).to.be.true;
-      expect(validate({ type: "type", name: "234"})).to.be.false;
+      expect(validate({ type: "type", name: "0"})).to.be.true;
+      expect(validate({ type: "type", name: "[]"})).to.be.false;
       expect(validate({ type: "type", name: "ABCDEF$"})).to.be.false;
    });
 

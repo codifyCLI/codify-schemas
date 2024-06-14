@@ -7,12 +7,12 @@
     "type": {
       "description": "The resource type",
       "type": "string",
-      "pattern": "^[a-zA-Z-_][\\w-]+$"
+      "pattern": "^[a-zA-Z][\\w-]+$"
     },
     "name": {
       "description": "Optional name. Useful for specifying multiple resources of the same type",
       "type": "string",
-      "pattern": "^[a-zA-Z-_][\\w-]+$"
+      "pattern": "^[\\w-]+$"
     },
     "dependsOn": {
       "type": "array",
