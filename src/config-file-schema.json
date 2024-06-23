@@ -4,6 +4,14 @@
   "title": "Config file Schema",
   "type": "array",
   "items": {
-    "$ref": "resource-schema.json"
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "description": "All config blocks must contain the keyword type",
+        "pattern": "^[a-zA-Z][\\w-]+$"
+      }
+    },
+    "required": ["type"]
   }
 }

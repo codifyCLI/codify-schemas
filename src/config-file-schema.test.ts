@@ -1,20 +1,20 @@
-import configSchema from './config-file-schema.json';
-import resourceSchema from './resource-schema.json';
+import configFileSchema from './config-file-schema.json';
 import { describe, it, expect } from 'vitest'
 import Ajv2020 from 'ajv/dist/2020.js'
 
 const ajv = new Ajv2020.default({
   strict: true,
 })
-ajv.addSchema(resourceSchema);
 
-describe("config file schema tests", () => {
-  it('compiles', () => {
-    ajv.compile(configSchema);
+describe("Config file schema tests", () => {
+  it('Compiles', () => {
+    ajv.compile(configFileSchema);
   })
 
-  it('accepts resource blocks', () => {
-    const validator = ajv.compile(configSchema);
+  it('And successfully validate blocks with type', () => {
+    const validator = ajv.compile(configFileSchema);
+
+    expect(validator([])).to.be.true;
 
     expect(validator([
       {
@@ -33,18 +33,39 @@ describe("config file schema tests", () => {
     expect(validator([
       {
         "type": "resource1",
-      },
-      {}
-    ])).to.be.false;
+      }
+    ])).to.be.true;
 
     expect(validator([
       {
         "type": "project",
-      },
-      {
-        "type": "resource2"
+        "description": "description",
       }
     ])).to.be.true;
   })
 
+  it('And errors on improper json', () => {
+    const validator = ajv.compile(configFileSchema);
+
+    expect(validator({
+      "a": {},
+      "b": {},
+    })).to.be.false;
+
+    expect(validator([
+      {
+        "type": "resource1"
+      },
+      "homebrew"
+    ])).to.be.false;
+
+    validator([
+      {
+        "type": "resource1"
+      },
+      {}
+    ])
+
+    console.log(validator.errors)
+  })
 })
