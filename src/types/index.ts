@@ -1,4 +1,5 @@
-import {SpawnOptions} from "node:child_process";
+import { SpawnOptions } from "node:child_process";
+import { ErrorObject } from "ajv";
 
 export interface StringIndexedObject {
   [x: string]: unknown;
@@ -35,11 +36,12 @@ export interface ValidateRequestData {
 }
 
 export interface ValidateResponseData {
-  validationResults: Array<{
+  resourceValidations: Array<{
     resourceType: string;
     resourceName?: string;
+    schemaValidationErrors: ErrorObject[];
+    customValidationErrorMessage?: string;
     isValid: boolean;
-    errors?: unknown[] | null;
   }>;
 }
 

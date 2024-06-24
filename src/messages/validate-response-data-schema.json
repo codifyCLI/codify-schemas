@@ -4,7 +4,7 @@
   "title": "Validate Response Schema Data",
   "type": "object",
   "properties": {
-    "validationResults": {
+    "resourceValidations": {
       "type": "array",
       "items": {
         "type": "object",
@@ -15,15 +15,23 @@
           "resourceName": {
             "type": "string"
           },
-          "isValid": {
-            "type": "boolean"
-          },
-          "errors": {
+          "schemaValidationErrors": {
             "type": "array",
-            "description": "Any errors in validation"
+            "description": "Schema validation errors. Right now only ajv schemas are supported",
+            "items": {
+              "type": "object"
+            }
+          },
+          "customValidationErrorMessage": {
+            "type": "string",
+            "description": "Custom plugin validation errors. These are a string that should be displayed to the user"
+          },
+          "isValid": {
+            "type": "boolean",
+            "description": "Indicates if the resources are valid. True if no errors, false if there are"
           }
         },
-        "required": ["resourceType", "isValid"]
+        "required": ["resourceType", "isValid", "schemaValidationErrors"]
       }
     }
   },

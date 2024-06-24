@@ -17,9 +17,24 @@ describe('Plan response data schema', () => {
   it("validates correct config", () => {
     const validate = ajv.compile(schema);
     expect(validate({
-      validationResults: [
-        { resourceType: 'abc', isValid: true },
-        { resourceType: 'abc', resourceName: 'def', isValid: false, errors: ["error1", "error2"] },
+      resourceValidations: [
+        {
+          resourceType: 'abc',
+          schemaValidationErrors: [],
+          isValid: true
+        },
+        {
+          resourceType: 'abc',
+          resourceName: 'def',
+          schemaValidationErrors: [
+            {
+              schemaPath: '/0',
+              instancePath: '/0'
+            }
+          ],
+          customValidationErrorMessage: "this is also an error message",
+          isValid: false,
+        },
       ]
     } as ValidateResponseData)).to.be.true;
   })
@@ -27,7 +42,7 @@ describe('Plan response data schema', () => {
   it ("validates incorrect config", () => {
     const validate = ajv.compile(schema);
     expect(validate({
-      validationResults: [
+      resourceValidations: [
         { resourceName: 'abc', isValid: true },
       ]
     } as ValidateResponseData)).to.be.false;
