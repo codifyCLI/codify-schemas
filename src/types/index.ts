@@ -45,7 +45,11 @@ export interface ValidateResponseData {
   }>;
 }
 
-export interface PlanRequestData extends ResourceConfig {}
+export interface PlanRequestData {
+  desired: ResourceConfig | undefined
+  state: ResourceConfig | undefined
+  isStateful: boolean
+}
 
 export enum ResourceOperation {
   CREATE = "create",

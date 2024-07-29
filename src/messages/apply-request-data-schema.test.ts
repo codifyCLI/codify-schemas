@@ -1,13 +1,14 @@
 import schema from './apply-request-data-schema.json';
 import resourceSchema from '../resource-schema.json'
 import {describe, expect, it} from 'vitest'
-import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats';
-import {ApplyRequestData, ParameterOperation, ResourceOperation} from "../types/index.js";
+import { ApplyRequestData, ParameterOperation, ResourceOperation } from "../types/index.js";
+import Ajv from 'ajv';
 
-const ajv = new Ajv2020.default({
+const ajv = new Ajv.default({
   strict: true,
 })
+
 addFormats.default(ajv);
 ajv.addSchema(resourceSchema);
 

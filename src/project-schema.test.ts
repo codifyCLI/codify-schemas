@@ -1,8 +1,8 @@
 import schema from './project-schema.json';
 import { describe, it, expect } from 'vitest'
-import Ajv2020 from 'ajv/dist/2020.js'
+import Ajv from 'ajv'
 
-const ajv = new Ajv2020.default({
+const ajv = new Ajv.default({
   strict: true,
 })
 

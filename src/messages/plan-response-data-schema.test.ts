@@ -1,11 +1,11 @@
 import schema from './plan-response-data-schema.json';
 import resourceSchema from '../resource-schema.json'
 import {describe, expect, it} from 'vitest'
-import Ajv2020 from 'ajv/dist/2020.js'
+import Ajv from 'ajv'
 import addFormats from 'ajv-formats';
 import {ParameterOperation, PlanResponseData, ResourceOperation} from "../types/index.js";
 
-const ajv = new Ajv2020.default({
+const ajv = new Ajv.default({
   strict: true,
 })
 addFormats.default(ajv);
