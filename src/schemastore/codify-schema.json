@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://www.codifycli.com/config-schema.json",
+  "$id": "https://www.codifycli.com/codify-schema.json",
   "title": "JSON schema for Codify configuration files",
   "type": "array",
   "items": {
@@ -8,7 +8,7 @@
     "properties": {
       "type": {
         "type": "string",
-        "description": "The type of resource being specified. Ex: project, homebrew",
+        "description": "Specifies the type of the config block. Ex: project, homebrew",
         "pattern": "^[a-zA-Z][\\w-]+$"
       }
     },
@@ -22,10 +22,11 @@
           "required": ["type"]
         },
         "then": {
+          "description": "Represents a project configuration block\nhttps://docs.codifycli.com/user-guide/codify-json/#project-configs",
           "properties": {
             "type": {},
             "version": {
-              "description": "CLI version constraint. An error will be throw if the CLI version is outside of the semver range",
+              "description": "Specifies a CLI version constraint. An error will be throw if the CLI version is outside of the semver range",
               "type": "string",
               "pattern": "^([0-9]+)\\.([0-9]+)\\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?(?:\\+[0-9A-Za-z-]+)?$"
             },
@@ -39,7 +40,7 @@
               }
             },
             "description": {
-              "description": "An optional description of the project. This value is not read.",
+              "description": "An optional description of the project. This value is not applied.",
               "type": "string"
             }
           },
@@ -58,11 +59,12 @@
           "required": ["type"]
         },
         "then": {
+          "description": "Represents a resource configuration block\nhttps://docs.codifycli.com/user-guide/codify-json/#resource-configs",
           "properties": {
             "name": {
               "type": "string",
               "pattern": "^[\\w-]+$",
-              "description": "Optional name. Useful for specifying multiple resources of the same type"
+              "description": "Optionally specify a name. Useful for specifying multiple resources of the same type"
             },
             "dependsOn": {
               "type": "array",
