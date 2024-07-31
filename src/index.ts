@@ -1,5 +1,5 @@
 // @ts-ignore
-import ConfigFileSchema from './config-file-schema.json' assert {type: 'json'}
+import ConfigFileSchema from './config-schema.json' assert {type: 'json'}
 import ProjectSchema from './project-schema.json' assert {type: 'json'}
 import ResourceSchema from './resource-schema.json' assert {type: 'json'}
 import IpcMessageSchema from './ipc-message-schema.json' assert {type: 'json'}
