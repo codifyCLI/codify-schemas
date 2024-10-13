@@ -1,11 +1,12 @@
-// @ts-ignore
-import ConfigFileSchema from './config-schema.json' assert {type: 'json'}
+import ConfigFileSchema from './config-file-schema.json' assert {type: 'json'}
 import ProjectSchema from './project-schema.json' assert {type: 'json'}
 import ResourceSchema from './resource-schema.json' assert {type: 'json'}
 import IpcMessageSchema from './ipc-message-schema.json' assert {type: 'json'}
 import ApplyRequestDataSchema from './messages/apply-request-data-schema.json' assert {type: 'json'}
 import ApplyResponseDataSchema from './messages/apply-response-data-schema.json' assert {type: 'json'}
 import ErrorResponseDataSchema from './messages/error-response-data-schema.json' assert {type: 'json'}
+import GetResourceInfoRequestDataSchema from './messages/get-resource-info-request-data-schema.json' assert {type: 'json'}
+import GetResourceInfoResponseDataSchema from './messages/get-resource-info-response-data-schema.json' assert {type: 'json'}
 import PlanRequestDataSchema from './messages/plan-request-data-schema.json' assert {type: 'json'}
 import PlanResponseDataSchema from './messages/plan-response-data-schema.json' assert {type: 'json'}
 import ValidateRequestDataSchema from './messages/validate-request-data-schema.json' assert {type: 'json'}
@@ -23,6 +24,8 @@ export {
   ApplyRequestDataSchema,
   ApplyResponseDataSchema,
   ErrorResponseDataSchema,
+  GetResourceInfoRequestDataSchema,
+  GetResourceInfoResponseDataSchema,
   PlanRequestDataSchema,
   PlanResponseDataSchema,
   ValidateRequestDataSchema,

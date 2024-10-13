@@ -1,9 +1,10 @@
 {
   "extends": "tsconfig.json",
   "compilerOptions": {
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "resolveJsonModule": true,
   },
   "include": [
     "src/**/*.test.ts"
-  ],
+  ]
 }

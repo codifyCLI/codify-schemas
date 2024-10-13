@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://www.codifycli.com/get-resource-info-request-data-schema.json",
+  "title": "Get Resource Schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The id/type of the resource"
+    }
+  },
+  "required": ["type"]
+}

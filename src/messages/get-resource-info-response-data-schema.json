@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://www.codifycli.com/get-resource-info-response-data-schema.json",
+  "title": "Get Resource Schema",
+  "type": "object",
+  "properties": {
+    "plugin": {
+      "type": "string",
+      "description": "The plugin the resource is from"
+    },
+    "type": {
+      "type": "string",
+      "description": "The id/type of the resource"
+    },
+    "schema": {
+      "type": "object",
+      "description": "The JSON Schema validation schema for the resource."
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["type", "plugin"]
+}

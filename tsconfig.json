@@ -7,7 +7,6 @@
     "resolveJsonModule": true,
     "alwaysStrict": true,
     "noImplicitAny": true,
-    "removeComments": true,
     "strictNullChecks": true,
     "declaration": true,
     "emitDecoratorMetadata": true,

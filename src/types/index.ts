@@ -79,6 +79,17 @@ export interface PlanResponseData {
   }>
 }
 
+export interface GetResourceInfoRequestData {
+  type: string;
+}
+
+export interface GetResourceInfoResponseData {
+  plugin: string;
+  type: string;
+  schema?: Record<string, unknown>,
+  dependencies?: string[],
+}
+
 export interface ApplyRequestData {
   planId?: string;
   plan?: {
