@@ -2,7 +2,7 @@ import schema from './initialize-request-data-schema.json';
 import {describe, expect, it} from 'vitest'
 import Ajv from 'ajv'
 
-const ajv = new Ajv.default({
+const ajv = new Ajv({
   strict: true,
 })
 

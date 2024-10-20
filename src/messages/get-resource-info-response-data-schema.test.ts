@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest'
 import Ajv from 'ajv'
 import {GetResourceInfoResponseData} from "../types";
 
-const ajv = new Ajv.default({
+const ajv = new Ajv({
   strict: true,
 })
 

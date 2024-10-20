@@ -7,6 +7,8 @@ import ApplyResponseDataSchema from './messages/apply-response-data-schema.json'
 import ErrorResponseDataSchema from './messages/error-response-data-schema.json' assert {type: 'json'}
 import GetResourceInfoRequestDataSchema from './messages/get-resource-info-request-data-schema.json' assert {type: 'json'}
 import GetResourceInfoResponseDataSchema from './messages/get-resource-info-response-data-schema.json' assert {type: 'json'}
+import ImportRequestDataSchema from './messages/import-request-data-schema.json' assert {type: 'json'}
+import ImportResponseDataSchema from './messages/import-response-data-schema.json' assert {type: 'json'}
 import PlanRequestDataSchema from './messages/plan-request-data-schema.json' assert {type: 'json'}
 import PlanResponseDataSchema from './messages/plan-response-data-schema.json' assert {type: 'json'}
 import ValidateRequestDataSchema from './messages/validate-request-data-schema.json' assert {type: 'json'}
@@ -26,6 +28,8 @@ export {
   ErrorResponseDataSchema,
   GetResourceInfoRequestDataSchema,
   GetResourceInfoResponseDataSchema,
+  ImportRequestDataSchema,
+  ImportResponseDataSchema,
   PlanRequestDataSchema,
   PlanResponseDataSchema,
   ValidateRequestDataSchema,

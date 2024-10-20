@@ -5,7 +5,7 @@ import addFormats from 'ajv-formats';
 import { ApplyRequestData, ParameterOperation, ResourceOperation } from "../types/index.js";
 import Ajv from 'ajv';
 
-const ajv = new Ajv.default({
+const ajv = new Ajv({
   strict: true,
 })
 

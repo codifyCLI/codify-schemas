@@ -88,6 +88,18 @@ export interface GetResourceInfoResponseData {
   type: string;
   schema?: Record<string, unknown>,
   dependencies?: string[],
+  import?: {
+    requiredParameters: string[] | null,
+  }
+}
+
+export interface ImportRequestData {
+  config: ResourceConfig;
+}
+
+export interface ImportResponseData {
+  request: ResourceConfig;
+  result: ResourceConfig[];
 }
 
 export interface ApplyRequestData {

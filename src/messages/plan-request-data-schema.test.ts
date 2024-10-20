@@ -3,7 +3,7 @@ import resourceSchema from '../resource-schema.json'
 import { describe, it, expect } from 'vitest'
 import Ajv from 'ajv'
 
-const ajv = new Ajv.default({
+const ajv = new Ajv({
   strict: true,
   strictRequired: false,
 })

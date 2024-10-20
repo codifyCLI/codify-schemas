@@ -3,7 +3,7 @@ import {describe, expect, it} from 'vitest'
 import addFormats from 'ajv-formats';
 import Ajv from 'ajv';
 
-const ajv = new Ajv.default({
+const ajv = new Ajv({
   strict: true,
 })
 
