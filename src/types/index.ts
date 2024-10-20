@@ -90,6 +90,15 @@ export interface GetResourceInfoResponseData {
   dependencies?: string[],
 }
 
+export interface ImportRequestData {
+  config: ResourceConfig;
+}
+
+export interface ImportResponseData {
+  request: ResourceConfig;
+  result: ResourceConfig[];
+}
+
 export interface ApplyRequestData {
   planId?: string;
   plan?: {

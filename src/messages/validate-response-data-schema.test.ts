@@ -4,7 +4,7 @@ import Ajv from 'ajv'
 import addFormats from 'ajv-formats';
 import {ValidateResponseData} from "../types/index.js";
 
-const ajv = new Ajv.default({
+const ajv = new Ajv({
   strict: true,
 })
 addFormats.default(ajv);
