@@ -71,14 +71,6 @@
       {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
-          },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
-          },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
@@ -96,7 +88,6 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "required": [
           "type"
         ],
@@ -105,13 +96,20 @@
       {
         "type": "object",
         "properties": {
-          "email": {
+          "path": {
             "type": "string",
-            "description": "The global email to set for git"
+            "description": "The path to append. This parameter cannot be used at the same time as paths"
           },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
+          "paths": {
+            "type": "array",
+            "description": "Multiple paths to append. This parameter cannot be used at the same time as path",
+            "items": {
+              "type": "string"
+            }
+          },
+          "prepend": {
+            "type": "boolean",
+            "description": "Whether or not to prepend to the path."
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -139,13 +137,14 @@
       {
         "type": "object",
         "properties": {
-          "email": {
+          "alias": {
             "type": "string",
-            "description": "The global email to set for git"
+            "pattern": "^[^ \t\n/\\$`=|&;()<>'\"]*$",
+            "description": "The path to append. This parameter cannot be used at the same time as paths"
           },
-          "username": {
+          "value": {
             "type": "string",
-            "description": "The global username to set for git"
+            "description": "The alias value"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -164,22 +163,36 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "required": [
+          "alias",
           "type"
         ],
+        "additionalProperties": false,
         "description": "Resource type: \"alias\" | Resource Schema"
       },
       {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
+          "formulae": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
+          "casks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "taps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "directory": {
+            "type": "string"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -207,13 +220,14 @@
       {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
+          "pythonVersions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
+          "global": {
+            "type": "string"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -241,14 +255,6 @@
       {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
-          },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
-          },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
@@ -275,14 +281,6 @@
       {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
-          },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
-          },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
@@ -309,13 +307,38 @@
       {
         "type": "object",
         "properties": {
-          "email": {
+          "profile": {
             "type": "string",
-            "description": "The global email to set for git"
+            "description": "The aws profile that is being configured",
+            "default": "default"
           },
-          "username": {
+          "awsAccessKeyId": {
             "type": "string",
-            "description": "The global username to set for git"
+            "description": "The access key id from AWS"
+          },
+          "awsSecretAccessKey": {
+            "type": "string",
+            "description": "The access key secret from AWS"
+          },
+          "csvCredentials": {
+            "type": "string",
+            "description": "An AWS credentials file with access credentials"
+          },
+          "region": {
+            "type": "string",
+            "description": "The region from AWS"
+          },
+          "output": {
+            "type": "string",
+            "description": "The output format secret from AWS"
+          },
+          "metadataServiceTimeout": {
+            "type": "string",
+            "description": "The metadata service timeout"
+          },
+          "metadataServiceNumAttempts": {
+            "type": "string",
+            "description": "The metadata service num attempts"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -334,6 +357,21 @@
             "type": "string"
           }
         },
+        "oneOf": [
+          {
+            "required": [
+              "awsAccessKeyId",
+              "awsSecretAccessKey",
+              "region"
+            ]
+          },
+          {
+            "required": [
+              "csvCredentials",
+              "region"
+            ]
+          }
+        ],
         "additionalProperties": false,
         "required": [
           "type"
@@ -343,13 +381,11 @@
       {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
+          "directory": {
+            "type": "string"
           },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
+          "version": {
+            "type": "string"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -377,13 +413,14 @@
       {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
+          "nodeVersions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
+          "global": {
+            "type": "string"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -411,13 +448,14 @@
       {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
+          "add": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
+          "global": {
+            "type": "string"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -445,14 +483,6 @@
       {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
-          },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
-          },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
@@ -479,13 +509,10 @@
       {
         "type": "object",
         "properties": {
-          "email": {
+          "directory": {
             "type": "string",
-            "description": "The global email to set for git"
-          },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
+            "description": "The installation of VSCode. This value defaults to the Applications folder",
+            "default": "/Applications"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -513,13 +540,21 @@
       {
         "type": "object",
         "properties": {
-          "email": {
+          "repository": {
             "type": "string",
-            "description": "The global email to set for git"
+            "description": "Remote repository to clone repo from."
           },
-          "username": {
+          "parentDirectory": {
             "type": "string",
-            "description": "The global username to set for git"
+            "description": "Parent directory to clone into. The folder name will use default git semantics which extracts the last part of the clone url. Only one of parentDirectory or directory can be specified"
+          },
+          "directory": {
+            "type": "string",
+            "description": "Directory to clone contents into. This value is directly passed into git clone. This differs from parent directory in that the last part of the path will be the folder name of the repo"
+          },
+          "autoVerifySSH": {
+            "type": "boolean",
+            "description": "Automatically verifies the ssh connection for ssh git clones. Defaults to true."
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -539,6 +574,20 @@
           }
         },
         "additionalProperties": false,
+        "oneOf": [
+          {
+            "required": [
+              "repository",
+              "directory"
+            ]
+          },
+          {
+            "required": [
+              "repository",
+              "parentDirectory"
+            ]
+          }
+        ],
         "required": [
           "type"
         ],
@@ -547,14 +596,11 @@
       {
         "type": "object",
         "properties": {
-          "email": {
+          "version": {
             "type": "string",
-            "description": "The global email to set for git"
+            "description": "Android studios version. Visit: https://developer.android.com/studio/releases for version info"
           },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
-          },
+          "directory": {},
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
@@ -581,13 +627,12 @@
       {
         "type": "object",
         "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
-          },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
+          "plugins": {
+            "type": "array",
+            "description": "Asdf plugins to install. See: https://github.com/asdf-community for a full list",
+            "items": {
+              "type": "string"
+            }
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -615,13 +660,20 @@
       {
         "type": "object",
         "properties": {
-          "email": {
+          "plugin": {
             "type": "string",
-            "description": "The global email to set for git"
+            "description": "Asdf plugin name"
           },
-          "username": {
+          "versions": {
+            "type": "array",
+            "description": "A list of versions to install",
+            "items": {
+              "type": "string"
+            }
+          },
+          "gitUrl": {
             "type": "string",
-            "description": "The global username to set for git"
+            "description": "The gitUrl of the plugin"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -640,22 +692,23 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "required": [
+          "plugin",
           "type"
         ],
+        "additionalProperties": false,
         "description": "Resource type: \"asdf-plugin\" | Resource Schema"
       },
       {
         "type": "object",
         "properties": {
-          "email": {
+          "plugin": {
             "type": "string",
-            "description": "The global email to set for git"
+            "description": "Asdf plugin name"
           },
-          "username": {
+          "version": {
             "type": "string",
-            "description": "The global username to set for git"
+            "description": "A version to install"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -674,22 +727,35 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "required": [
+          "plugin",
+          "version",
           "type"
         ],
+        "additionalProperties": false,
         "description": "Resource type: \"asdf-global\" | Resource Schema"
       },
       {
         "type": "object",
         "properties": {
-          "email": {
+          "plugin": {
             "type": "string",
-            "description": "The global email to set for git"
+            "description": "Asdf plugin name"
           },
-          "username": {
+          "version": {
             "type": "string",
-            "description": "The global username to set for git"
+            "description": "A version to install"
+          },
+          "directory": {
+            "type": "string",
+            "description": "A local install of the version. Provide the location to install the version. For the current directory use '.'"
+          },
+          "directories": {
+            "type": "array",
+            "description": "An array of install locations for the specified version. For the current directory use '.",
+            "items": {
+              "type": "string"
+            }
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -708,22 +774,31 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "required": [
+          "plugin",
+          "version",
           "type"
         ],
+        "additionalProperties": false,
         "description": "Resource type: \"asdf-local\" | Resource Schema"
       },
       {
         "type": "object",
         "properties": {
-          "email": {
+          "plugin": {
             "type": "string",
-            "description": "The global email to set for git"
+            "description": "Asdf plugin name"
           },
-          "username": {
+          "versions": {
+            "type": "array",
+            "description": "A list of versions to install",
+            "items": {
+              "type": "string"
+            }
+          },
+          "directory": {
             "type": "string",
-            "description": "The global username to set for git"
+            "description": "The directory to run the install command"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -742,13 +817,25 @@
             "type": "string"
           }
         },
+        "oneOf": [
+          {
+            "required": [
+              "plugin",
+              "versions"
+            ]
+          },
+          {
+            "required": [
+              "directory"
+            ]
+          }
+        ],
         "additionalProperties": false,
         "required": [
           "type"
         ],
         "description": "Resource type: \"asdf-install\" | Resource Schema"
       }
-
     ]
   }
 }
