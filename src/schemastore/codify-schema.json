@@ -4,79 +4,57 @@
   "title": "JSON schema for Codify configuration files",
   "type": "array",
   "items": {
-    "type": "object",
-    "properties": {
-      "type": {
-        "type": "string",
-        "description": "Specifies the type of the config block. Ex: project, homebrew",
-        "pattern": "^[a-zA-Z][\\w-]+$"
-      }
-    },
-    "required": ["type"],
-    "allOf": [
+    "anyOf": [
       {
-        "if": {
-          "properties": {
-            "type": { "enum": ["project"] }
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "All project configs are of the type project",
+            "type": "string",
+            "const": "project"
           },
-          "required": ["type"]
-        },
-        "then": {
-          "description": "Represents a project configuration block\nhttps://docs.codifycli.com/user-guide/codify-json/#project-configs",
-          "properties": {
-            "type": {},
-            "version": {
-              "description": "Specifies a CLI version constraint. An error will be throw if the CLI version is outside of the semver range",
-              "type": "string",
-              "pattern": "^([0-9]+)\\.([0-9]+)\\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?(?:\\+[0-9A-Za-z-]+)?$"
-            },
-            "plugins": {
-              "description": "A list of third party plugins to include.",
-              "type": "object",
-              "patternProperties": {
-                ".*": {
-                  "type": "string"
-                }
+          "version": {
+            "description": "Semver version. Codify will throw an error if this is not satisfied",
+            "type": "string",
+            "pattern": "^([0-9]+)\\.([0-9]+)\\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?(?:\\+[0-9A-Za-z-]+)?$"
+          },
+          "plugins": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "type": "string"
               }
-            },
-            "description": {
-              "description": "An optional description of the project. This value is not applied.",
-              "type": "string"
             }
           },
-          "additionalProperties": false
-        }
+          "description": {
+            "description": "An optional description of the codify project",
+            "type": "string"
+          }
+        },
+        "required": ["type"]
       },
       {
-        "if": {
-          "not": {
-            "properties": {
-              "type": {
-                "enum": ["project"]
-              }
-            }
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The resource type",
+            "type": "string",
+            "pattern": "^[a-zA-Z][\\w-]+$"
           },
-          "required": ["type"]
-        },
-        "then": {
-          "description": "Represents a resource configuration block\nhttps://docs.codifycli.com/user-guide/codify-json/#resource-configs",
-          "properties": {
-            "name": {
-              "type": "string",
-              "pattern": "^[\\w-]+$",
-              "description": "Optionally specify a name. Useful for specifying multiple resources of the same type"
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
             },
-            "dependsOn": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "uniqueItems": true,
-              "description": "Specify resource dependencies. Must be the type or id of another resource"
-            }
-          },
-          "additionalProperties": true
-        }
+            "uniqueItems": true
+          }
+        },
+        "required": ["type"]
       }
     ]
   }
