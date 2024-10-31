@@ -31,15 +31,21 @@
             "type": "string"
           }
         },
-        "required": ["type"]
+        "required": ["type"],
+        "additionalProperties": false
       },
       {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
         "type": "object",
         "properties": {
-          "type": {
-            "description": "The resource type",
+          "email": {
             "type": "string",
-            "pattern": "^[a-zA-Z][\\w-]+$"
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -52,9 +58,737 @@
               "type": "string"
             },
             "uniqueItems": true
+          },
+          "type": {
+            "const": "git",
+            "type": "string"
           }
         },
-        "required": ["type"]
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"git\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "xcode-tools",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"xcode-tools\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "path",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"path\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "alias",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"alias\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "homebrew",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"homebrew\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "pyenv",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"pyenv\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "git-lfs",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"git-lfs\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "aws-cli",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"aws-cli\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "aws-profile",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"aws-profile\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "terraform",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"terraform\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "nvm",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"nvm\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "jenv",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"jenv\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "pgcli",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"pgcli\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "vscode",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"vscode\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "git-clone",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"git-clone\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "android-studio",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"android-studio\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "asdf",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"asdf\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "asdf-plugin",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"asdf-plugin\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "asdf-global",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"asdf-global\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "asdf-local",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"asdf-local\" | Resource Schema"
+      },
+      {
+        "$schema": "http://json-schema.org/draft-07/schema",
+        "title": "Jenv resource",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "asdf-install",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "description": "Resource type: \"asdf-install\" | Resource Schema"
       }
     ]
   }

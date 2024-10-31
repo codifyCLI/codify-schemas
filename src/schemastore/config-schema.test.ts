@@ -18,21 +18,17 @@ describe("Config file schema tests", () => {
 
     expect(validator([
       {
-        "type": "resource1",
+        "type": "homebrew",
       },
       {
-        "type": "resource2",
-        "name": "abc",
-        "prop1": {
-          "a": "b",
-        },
-        "prop2": "c"
+        "type": "git",
+        "email": "evon@gmail.com"
       }
     ])).to.be.true;
 
     expect(validator([
       {
-        "type": "resource1",
+        "type": "jenv",
         "dependsOn": [
           "resource2"
         ]
@@ -45,43 +41,58 @@ describe("Config file schema tests", () => {
         "version": "0.0.1",
         "description": "description",
       }
+    ])).to.be.true
+
+    expect(validator([
+      {
+        "type": "project",
+      },
+      {
+        "type": "asdf"
+      }
     ])).to.be.true;
   })
 
   it('And errors on improper json', () => {
     const validator = ajv.compile(schema);
 
-    expect(validator({
-      "a": {},
-      "b": {},
+    expect(validator({ // must be a top level array
     })).to.be.false;
 
     expect(validator([
       {
-        "type": "resource1"
+        "type": "resource1" // type Id is not valid
       },
-      "homebrew"
     ])).to.be.false;
 
     expect(validator([
       {
-        "type": "resource1"
+        "type": "homebrew"
       },
-      {}
+      "homebrew" // must be an array of objects
+    ])).to.be.false;
+
+    expect(validator([
+      {
+        "type": "homebrew"
+      },
+      {} // must contain type
     ])).to.be.false;
 
     expect(validator([
       {
         "type": "resource1",
-        "dependsOn": {}
+        "dependsOn": {} //must be array
       }
     ])).to.be.false;
 
-    // expect(validator([
-    //   {
-    //     "type": "project",
-    //     "additionalProperty": true
-    //   }
-    // ])).to.be.false;
+    expect(validator([
+      {
+        "type": "project",
+      },
+      {
+        "type": "resource1" // not a valid typeId
+      }
+    ])).to.be.false;
   })
 })
