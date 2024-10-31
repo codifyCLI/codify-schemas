@@ -35,8 +35,6 @@
         "additionalProperties": false
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -71,8 +69,6 @@
         "description": "Resource type: \"git\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -107,8 +103,6 @@
         "description": "Resource type: \"xcode-tools\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -143,8 +137,6 @@
         "description": "Resource type: \"path\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -179,8 +171,6 @@
         "description": "Resource type: \"alias\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -215,8 +205,6 @@
         "description": "Resource type: \"homebrew\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -251,8 +239,6 @@
         "description": "Resource type: \"pyenv\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -287,8 +273,6 @@
         "description": "Resource type: \"git-lfs\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -323,8 +307,6 @@
         "description": "Resource type: \"aws-cli\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -359,8 +341,6 @@
         "description": "Resource type: \"aws-profile\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -395,8 +375,6 @@
         "description": "Resource type: \"terraform\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -431,8 +409,6 @@
         "description": "Resource type: \"nvm\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -467,8 +443,6 @@
         "description": "Resource type: \"jenv\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -503,8 +477,6 @@
         "description": "Resource type: \"pgcli\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -539,8 +511,6 @@
         "description": "Resource type: \"vscode\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -575,8 +545,6 @@
         "description": "Resource type: \"git-clone\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -611,8 +579,6 @@
         "description": "Resource type: \"android-studio\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -647,8 +613,6 @@
         "description": "Resource type: \"asdf\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -683,8 +647,6 @@
         "description": "Resource type: \"asdf-plugin\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -719,8 +681,6 @@
         "description": "Resource type: \"asdf-global\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -755,8 +715,6 @@
         "description": "Resource type: \"asdf-local\" | Resource Schema"
       },
       {
-        "$schema": "http://json-schema.org/draft-07/schema",
-        "title": "Jenv resource",
         "type": "object",
         "properties": {
           "email": {
@@ -790,6 +748,7 @@
         ],
         "description": "Resource type: \"asdf-install\" | Resource Schema"
       }
+
     ]
   }
 }
