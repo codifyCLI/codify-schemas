@@ -835,6 +835,196 @@
           "type"
         ],
         "description": "Resource type: \"asdf-install\" | Resource Schema"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "keyType": {
+            "type": "string",
+            "description": "The type of key to create (the encryption algorithm used). This corresponds to the -t flag of ssh-keygen. This value defaults to ed25519.",
+            "enum": [
+              "ecdsa",
+              "ecdsa-sk",
+              "ed25519",
+              "ed25519-sk",
+              "rsa"
+            ]
+          },
+          "comment": {
+            "type": "string",
+            "description": "Comment to add to the ssh key. Changing this value will not re-create the ssh key"
+          },
+          "fileName": {
+            "type": "string",
+            "description": "Specifies the filename of the key file. This corresponds to the -f flag of ssh-keygen"
+          },
+          "bits": {
+            "type": "number",
+            "description": "Specifies the number of bits in the key to create. This corresponds to the -b flag of ssh-keygen."
+          },
+          "passphrase": {
+            "type": "string",
+            "description": "The passphrase to use. This parameter is required. To set an empty password set the value to the empty string: \"\""
+          },
+          "folder": {
+            "type": "string",
+            "description": "The folder to generate the ssh key in. Defaults to `$HOME/.ssh`"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "ssh-key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "passphrase",
+          "type"
+        ],
+        "additionalProperties": false,
+        "description": "Resource type: \"ssh-key\" | Resource Schema"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "hosts": {
+            "description": "The host blocks inside of the ~/.ssh/config file. See http://man.openbsd.org/OpenBSD-current/man5/ssh_config.5 ",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "The individual host blocks inside of the ~/.ssh/config file",
+              "properties": {
+                "Host": {
+                  "type": "string",
+                  "description": "The host is usually the hostname argument given on the command line. Can accept ! and *"
+                },
+                "Match": {
+                  "type": "string",
+                  "description": "Restricts the following declarations (up to the next Host or Match keyword) to be used only when the conditions following the Match keyword are satisfied"
+                },
+                "AddKeysToAgent": {
+                  "type": "boolean",
+                  "description": "Specifies whether keys should be automatically added to a running ssh-agent(1)"
+                },
+                "User": {
+                  "type": "string",
+                  "description": "Specifies the user to log in as. This can be useful when a different user name is used on different machines"
+                },
+                "UseKeychain": {
+                  "type": "boolean",
+                  "description": "A UseKeychain option was introduced in macOS Sierra allowing users to specify whether they would like for the passphrase to be stored in the keychain"
+                },
+                "IgnoreUnknown": {
+                  "type": "string",
+                  "description": "Specifies a pattern-list of unknown options to be ignored if they are encountered in configuration parsing"
+                },
+                "Port": {
+                  "type": "number",
+                  "description": "Specifies the port number to connect on the remote host. The default is 22."
+                },
+                "IdentityFile": {
+                  "type": "string",
+                  "description": "Specifies a file from which the user's ECDSA, authenticator-hosted ECDSA, Ed25519, authenticator-hosted Ed25519 or RSA authentication identity is read"
+                },
+                "LogLevel": {
+                  "type": "string",
+                  "description": "Gives the verbosity level that is used when logging messages from ssh(1)."
+                },
+                "Compression": {
+                  "type": "boolean",
+                  "description": "Specifies whether to use compression. The argument must be yes or no (the default)."
+                },
+                "PreferredAuthentications": {
+                  "type": "string",
+                  "description": "Specifies the order in which the client should try authentication methods."
+                },
+                "PasswordAuthentication": {
+                  "type": "boolean",
+                  "description": "Specifies whether to use password authentication."
+                }
+              },
+              "oneOf": [
+                {
+                  "required": [
+                    "Host"
+                  ]
+                },
+                {
+                  "required": [
+                    "Match"
+                  ]
+                }
+              ]
+            }
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "ssh-config",
+            "type": "string"
+          }
+        },
+        "required": [
+          "hosts",
+          "type"
+        ],
+        "additionalProperties": false,
+        "description": "Resource type: \"ssh-config\" | Resource Schema"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "The path to the ssh key to add"
+          },
+          "appleUseKeychain": {
+            "type": "boolean",
+            "description": "Corresponds to the --apple-use-keychain parameter. Controls whether the key should be loaded into the apple keychain. Only keys with a passphrase can be loaded"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "ssh-add",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "type"
+        ],
+        "additionalProperties": false,
+        "description": "Resource type: \"ssh-add\" | Resource Schema"
       }
     ]
   }
