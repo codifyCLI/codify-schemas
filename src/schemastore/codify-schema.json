@@ -194,6 +194,10 @@
           "directory": {
             "type": "string"
           },
+          "skipAlreadyInstalledCasks": {
+            "type": "boolean",
+            "description": "Skips installing an casks which has already been installed externally. This prevents homebrew from conflicting with the existing install. Defaults to true."
+          },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
@@ -1025,6 +1029,76 @@
         ],
         "additionalProperties": false,
         "description": "Resource type: \"ssh-add\" | Resource Schema"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "condition": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "action",
+            "type": "string"
+          }
+        },
+        "required": [
+          "action",
+          "type"
+        ],
+        "additionalProperties": false,
+        "description": "Resource type: \"action\" | Resource Schema"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "contents": {
+            "type": "string"
+          },
+          "onlyCreate": {
+            "type": "boolean"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "file",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "contents",
+          "type"
+        ],
+        "additionalProperties": false,
+        "description": "Resource type: \"file\" | Resource Schema"
       }
     ]
   }
