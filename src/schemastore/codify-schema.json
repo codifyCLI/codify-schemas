@@ -1039,6 +1039,9 @@
           "action": {
             "type": "string"
           },
+          "cwd": {
+            "type": "string"
+          },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
