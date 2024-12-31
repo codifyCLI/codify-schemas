@@ -31,6 +31,13 @@ export interface IpcMessage {
   data: unknown | null;
 }
 
+export interface IpcMessageV2 {
+  cmd: string;
+  requestId: string;
+  status?: MessageStatus;
+  data: unknown | null;
+}
+
 export interface ValidateRequestData {
   configs: ResourceConfig[];
 }

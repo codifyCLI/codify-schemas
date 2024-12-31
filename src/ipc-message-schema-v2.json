@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://www.codifycli.com/ipc-message-schema-v2.json",
+  "title": "IPC Message Schema V2",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "description": "The uri for the message. Like an http url",
+      "type": "string"
+    },
+    "requestId": {
+      "type": "string",
+      "description": "Unique identifier to identify a request and it's corresponding response"
+    },
+    "status": {
+      "description": "The status of the request. Only used for responses. Can be either success or error",
+      "type": "string",
+      "enum": ["success", "error"]
+    },
+    "data": {
+      "description": "The data of the message."
+    }
+  },
+  "required": ["cmd", "data", "requestId"]
+}

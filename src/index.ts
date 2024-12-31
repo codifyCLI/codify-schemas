@@ -2,6 +2,7 @@ import ConfigFileSchema from './config-file-schema.json' assert {type: 'json'}
 import ProjectSchema from './project-schema.json' assert {type: 'json'}
 import ResourceSchema from './resource-schema.json' assert {type: 'json'}
 import IpcMessageSchema from './ipc-message-schema.json' assert {type: 'json'}
+import IpcMessageV2Schema from './ipc-message-schema-v2.json' assert {type: 'json'}
 import ApplyRequestDataSchema from './messages/apply-request-data-schema.json' assert {type: 'json'}
 import ApplyResponseDataSchema from './messages/apply-response-data-schema.json' assert {type: 'json'}
 import ErrorResponseDataSchema from './messages/error-response-data-schema.json' assert {type: 'json'}
@@ -23,6 +24,7 @@ export {
   ProjectSchema,
   ResourceSchema,
   IpcMessageSchema,
+  IpcMessageV2Schema,
   ApplyRequestDataSchema,
   ApplyResponseDataSchema,
   ErrorResponseDataSchema,
