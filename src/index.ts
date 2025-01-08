@@ -1,23 +1,23 @@
-import ConfigFileSchema from './config-file-schema.json' assert {type: 'json'}
-import ProjectSchema from './project-schema.json' assert {type: 'json'}
-import ResourceSchema from './resource-schema.json' assert {type: 'json'}
-import IpcMessageSchema from './ipc-message-schema.json' assert {type: 'json'}
-import IpcMessageV2Schema from './ipc-message-schema-v2.json' assert {type: 'json'}
-import ApplyRequestDataSchema from './messages/apply-request-data-schema.json' assert {type: 'json'}
-import ApplyResponseDataSchema from './messages/apply-response-data-schema.json' assert {type: 'json'}
-import ErrorResponseDataSchema from './messages/error-response-data-schema.json' assert {type: 'json'}
-import GetResourceInfoRequestDataSchema from './messages/get-resource-info-request-data-schema.json' assert {type: 'json'}
-import GetResourceInfoResponseDataSchema from './messages/get-resource-info-response-data-schema.json' assert {type: 'json'}
-import ImportRequestDataSchema from './messages/import-request-data-schema.json' assert {type: 'json'}
-import ImportResponseDataSchema from './messages/import-response-data-schema.json' assert {type: 'json'}
-import PlanRequestDataSchema from './messages/plan-request-data-schema.json' assert {type: 'json'}
-import PlanResponseDataSchema from './messages/plan-response-data-schema.json' assert {type: 'json'}
-import ValidateRequestDataSchema from './messages/validate-request-data-schema.json' assert {type: 'json'}
-import ValidateResponseDataSchema from './messages/validate-response-data-schema.json' assert {type: 'json'}
-import InitializeRequestDataSchema from './messages/initialize-request-data-schema.json' assert {type: 'json'}
-import InitializeResponseDataSchema from './messages/initialize-response-data-schema.json' assert {type: 'json'}
-import SudoRequestDataSchema from './messages/sudo-request-data-schema.json' assert {type: 'json'};
-import SudoRequestResponseDataSchema from './messages/sudo-response-data-schema.json' assert {type: 'json'};
+const ConfigFileSchema = await import('./config-file-schema.json', {assert: {type: 'json'}})
+const ProjectSchema = await import('./project-schema.json', {assert: {type: 'json'}})
+const ResourceSchema = await import('./resource-schema.json', {assert: {type: 'json'}})
+const IpcMessageSchema = await import('./ipc-message-schema.json', {assert: {type: 'json'}})
+const IpcMessageV2Schema = await import('./ipc-message-schema-v2.json', {assert: {type: 'json'}})
+const ApplyRequestDataSchema = await import('./messages/apply-request-data-schema.json', {assert: {type: 'json'}})
+const ApplyResponseDataSchema = await import('./messages/apply-response-data-schema.json', {assert: {type: 'json'}})
+const ErrorResponseDataSchema = await import('./messages/error-response-data-schema.json', {assert: {type: 'json'}})
+const GetResourceInfoRequestDataSchema = await import('./messages/get-resource-info-request-data-schema.json', {assert: {type: 'json'}})
+const GetResourceInfoResponseDataSchema = await import('./messages/get-resource-info-response-data-schema.json', {assert: {type: 'json'}})
+const ImportRequestDataSchema = await import('./messages/import-request-data-schema.json', {assert: {type: 'json'}})
+const ImportResponseDataSchema = await import('./messages/import-response-data-schema.json', {assert: {type: 'json'}})
+const PlanRequestDataSchema = await import('./messages/plan-request-data-schema.json', {assert: {type: 'json'}})
+const PlanResponseDataSchema = await import('./messages/plan-response-data-schema.json', {assert: {type: 'json'}})
+const ValidateRequestDataSchema = await import('./messages/validate-request-data-schema.json', {assert: {type: 'json'}})
+const ValidateResponseDataSchema = await import('./messages/validate-response-data-schema.json', {assert: {type: 'json'}})
+const InitializeRequestDataSchema = await import('./messages/initialize-request-data-schema.json', {assert: {type: 'json'}})
+const InitializeResponseDataSchema = await import('./messages/initialize-response-data-schema.json', {assert: {type: 'json'}})
+const SudoRequestDataSchema = await import('./messages/sudo-request-data-schema.json', {assert: {type: 'json'}});
+const SudoRequestResponseDataSchema = await import('./messages/sudo-response-data-schema.json', {assert: {type: 'json'}});
 
 export {
   ConfigFileSchema,
