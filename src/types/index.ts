@@ -115,6 +115,7 @@ export interface ApplyRequestData {
     operation: ResourceOperation;
     resourceName?: string;
     resourceType: string;
+    statefulMode: boolean;
     parameters: Array<{
       name: string;
       operation: ParameterOperation;

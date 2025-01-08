@@ -35,6 +35,10 @@
               "description": "The resource name",
               "type": ["string", "null"]
             },
+            "statefulMode": {
+              "description": "Boolean value indicating if this plan was stateful",
+              "type": "boolean"
+            },
             "parameters": {
               "description": "The properties come from the provided config and is not necessarily every parameter on the ",
               "type": "array",
@@ -71,7 +75,7 @@
               }
             }
           },
-          "required": ["operation", "resourceType", "parameters"]
+          "required": ["operation", "resourceType", "parameters", "statefulMode"]
         }
       },
       "required": ["plan"],
