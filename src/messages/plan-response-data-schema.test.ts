@@ -22,6 +22,7 @@ describe('Plan response data schema', () => {
       planId: 'eb367e53-21a8-4c9e-a38b-c99e7c821344',
       operation: ResourceOperation.CREATE,
       resourceType: 'type1',
+      isStateful: true,
       parameters: [{
         name: 'parameter1',
         operation: ParameterOperation.ADD,

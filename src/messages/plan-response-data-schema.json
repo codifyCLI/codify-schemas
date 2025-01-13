@@ -14,6 +14,10 @@
       "type": "string",
       "enum" : ["create", "destroy", "modify", "recreate", "noop"]
     },
+    "isStateful": {
+      "description": "Describes if the plan was a stateful plan",
+      "type": "boolean"
+    },
     "resourceType": {
       "description": "The resource type",
       "type": "string"
@@ -48,6 +52,6 @@
       }
     }
   },
-  "required": ["planId", "operation", "resourceType", "parameters"],
+  "required": ["planId", "isStateful", "operation", "resourceType", "parameters"],
   "additionalProperties": false
 }

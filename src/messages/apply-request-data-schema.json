@@ -4,7 +4,7 @@
   "title": "Apply Request Schema Data",
   "description": "Apply the previously generated plan. The plan must already be generated in order for apply to work.",
   "type": "object",
-  "anyOf": [
+  "oneOf": [
     {
       "properties": {
         "planId": {
@@ -35,7 +35,7 @@
               "description": "The resource name",
               "type": ["string", "null"]
             },
-            "statefulMode": {
+            "isStateful": {
               "description": "Boolean value indicating if this plan was stateful",
               "type": "boolean"
             },
@@ -75,7 +75,7 @@
               }
             }
           },
-          "required": ["operation", "resourceType", "parameters", "statefulMode"]
+          "required": ["operation", "resourceType", "parameters", "isStateful"]
         }
       },
       "required": ["plan"],

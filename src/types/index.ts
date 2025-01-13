@@ -78,6 +78,7 @@ export interface PlanResponseData {
   operation: ResourceOperation;
   resourceName?: string;
   resourceType: string;
+  isStateful: boolean;
   parameters: Array<{
     name: string;
     operation: ParameterOperation;
@@ -115,7 +116,7 @@ export interface ApplyRequestData {
     operation: ResourceOperation;
     resourceName?: string;
     resourceType: string;
-    statefulMode: boolean;
+    isStateful: boolean;
     parameters: Array<{
       name: string;
       operation: ParameterOperation;

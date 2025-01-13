@@ -30,7 +30,7 @@ describe('Apply request data schema', () => {
       plan: {
         operation: ResourceOperation.CREATE,
         resourceType: 'type1',
-        statefulMode: true,
+        isStateful: true,
         parameters: [{
           name: 'parameter1',
           operation: ParameterOperation.ADD,
@@ -47,7 +47,7 @@ describe('Apply request data schema', () => {
       plan: {
         operation: ResourceOperation.CREATE,
         resourceType: 'type1',
-        statefulMode: false,
+        isStateful: false,
         parameters: [{
           name: 'parameter1',
           operation: ParameterOperation.NOOP,
