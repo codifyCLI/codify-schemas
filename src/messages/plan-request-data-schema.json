@@ -22,7 +22,7 @@
   },
   "additionalProperties": false,
   "anyOf": [
-    { "required": ["desired", "isStateful"] },
-    { "required": ["state", "isStateful"] }
+    { "required": ["core", "desired", "isStateful"] },
+    { "required": ["core", "state", "isStateful"] }
   ]
 }

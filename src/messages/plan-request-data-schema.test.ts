@@ -17,23 +17,22 @@ describe('Plan request data schema', () => {
   it("It accepts either state, desired or both", () => {
     const validate = ajv.compile(schema);
     expect(validate({
-      desired: {
-        type: "type"
-      },
+      core: { type: "type" },
+      desired: {},
       isStateful: false
     })).to.be.true;
     expect(validate({
-      state: {
-        type: "type"
-      },
+      core: { type: "type" },
+      state: {},
       isStateful: false
     })).to.be.true;
     expect(validate({
+      core: { type: "type" },
       desired: {
-        type: "type"
+        parameter1: 'a'
       },
       state: {
-        type: "type"
+        parameter2: 'b'
       },
       isStateful: false
     })).to.be.true;
@@ -43,22 +42,34 @@ describe('Plan request data schema', () => {
   it ("name and type are alpha-numeric and follow variable naming conventions", () => {
     const validate = ajv.compile(schema);
     expect(validate({
-      desired: { type: "a234abcDEF_-" },
+      core: { type: "a234abcDEF_-" },
+      desired: { },
       isStateful: false
     })).to.be.true;
+
     expect(validate({
+      core: { type: "234" },
       desired: { type: "234" },
-      isStateful: false
-    })).to.be.false;
-    expect(validate({
-      desired: { type: "ABCDEF$" },
       isStateful: false
     })).to.be.false;
 
     expect(validate({
-      desired: { type: "type", name: "a234abcDEF_-" },
+      core: { type: "ABCDEF$" },
+      desired: { },
+      isStateful: false
+    })).to.be.false;
+
+    expect(validate({
+      core: { type: "type", name: "a234abcDEF_-" },
+      desired: {  },
       isStateful: false
     })).to.be.true;
+    expect(validate({
+      core: { type: "type", name: "ABCDEF$" },
+      desired: {},
+      isStateful: false
+    })).to.be.false;
+
     expect(validate({
       desired: { type: "type", name: "ABCDEF$" },
       isStateful: false

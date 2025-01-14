@@ -17,30 +17,34 @@ describe('Import request data schema', () => {
   it("Validates correct data", () => {
     const validate = ajv.compile(schema);
     expect(validate({
-      config: {
+      core: {
         type: "type"
       },
+      parameters: {},
     })).to.be.true;
     expect(validate({
-      config: {
+      core: {
         type: "type",
         name: "name",
+      },
+      parameters: {
         propA: "a",
         propB: { a: 'b' }
       },
     })).to.be.true;
     expect(validate({
-      config: {
+      core: {
         type: "type",
         dependsOn: ["a", "b"]
       },
+      parameters: {},
     })).to.be.true;
   })
 
   it("Errors on incorrect data", () => {
     const validate = ajv.compile(schema);
     expect(validate({
-      config: {},
+      core: {},
     })).to.be.false;
     expect(validate({})).to.be.false;
   })

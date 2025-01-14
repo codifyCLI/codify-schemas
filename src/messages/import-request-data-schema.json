@@ -4,18 +4,12 @@
   "title": "Import Request Schema Data",
   "type": "object",
   "properties": {
-    "config": {
-      "type": "object",
-      "properties": {
-        "core": {
-          "$ref": "resource-schema.json"
-        },
-        "parameters": {
-          "type": "object"
-        }
-      },
-      "required": ["core", "parameters"]
+    "core": {
+      "$ref": "resource-schema.json"
+    },
+    "parameters": {
+      "type": "object"
     }
   },
-  "required": ["config"]
+  "required": ["core", "parameters"]
 }
