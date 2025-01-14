@@ -5,12 +5,28 @@
   "type": "object",
   "properties": {
     "request": {
-      "$ref": "resource-schema.json"
+      "type": "object",
+      "properties": {
+        "core": {
+          "$ref": "resource-schema.json"
+        },
+        "parameters": {
+          "type": "object"
+        }
+      }
     },
     "result": {
       "type": "array",
       "items": {
-        "$ref": "resource-schema.json"
+        "type": "object",
+        "properties": {
+          "core": {
+            "$ref": "resource-schema.json"
+          },
+          "parameters": {
+            "type": "object"
+          }
+        }
       }
     }
   },

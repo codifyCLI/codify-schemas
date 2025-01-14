@@ -4,11 +4,16 @@
   "title": "Plan Request Schema Data",
   "type": "object",
   "properties": {
-    "desired": {
+    "core": {
       "$ref": "resource-schema.json"
     },
+    "desired": {
+      "type": "object",
+      "description": "The desired parameters specified by the user. A null desired means this config was not specified (for deletes). Pass an empty object {} for no parameters."
+    },
     "state": {
-      "$ref": "resource-schema.json"
+      "type": "object",
+      "description": "The desired parameters specified by the user.  A null state means this config was not specified (non-stateful). Pass an empty object {} for no parameters."
     },
     "isStateful": {
       "type": "boolean",

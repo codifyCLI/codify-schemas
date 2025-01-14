@@ -38,8 +38,17 @@ export interface IpcMessageV2 {
   data: unknown | null;
 }
 
+/**
+ * Processed resource that is in a format suitable for sending. The core parameters (such as type and name) and other parameters
+ * are separate for easier processing.
+ */
+export interface ResourceJson {
+  core: ResourceConfig;
+  parameters: Record<string, unknown>;
+}
+
 export interface ValidateRequestData {
-  configs: ResourceConfig[];
+  configs: Array<ResourceJson>;
 }
 
 export interface ValidateResponseData {
@@ -53,8 +62,9 @@ export interface ValidateResponseData {
 }
 
 export interface PlanRequestData {
-  desired: ResourceConfig | undefined
-  state: ResourceConfig | undefined
+  core: ResourceConfig;
+  desired?: Record<string, unknown>;
+  state?: Record<string, unknown>;
   isStateful: boolean
 }
 
@@ -102,12 +112,13 @@ export interface GetResourceInfoResponseData {
 }
 
 export interface ImportRequestData {
-  config: ResourceConfig;
+  core: ResourceConfig;
+  parameters: Record<string, unknown>;
 }
 
 export interface ImportResponseData {
-  request: ResourceConfig;
-  result: ResourceConfig[];
+  request: ResourceJson
+  result: Array<ResourceJson>,
 }
 
 export interface ApplyRequestData {
@@ -134,10 +145,7 @@ export interface ResourceDefinition {
 export interface InitializeRequestData {}
 
 export interface InitializeResponseData {
-  resourceDefinitions: Array<{
-    type: string;
-    dependencies: string[];
-  }>;
+  resourceDefinitions: Array<ResourceDefinition>;
 }
 
 export interface SudoRequestData {
