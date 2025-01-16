@@ -1,13 +1,13 @@
 {
   "name": "codify-schemas",
-  "version": "1.0.60",
+  "version": "1.0.63",
   "description": "",
   "type": "module",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "vitest",
-    "prepublish": "tsc"
+    "prepublishOnly": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
     "ajv": "^8.12.0"
   },
   "devDependencies": {
+    "@types/node": "20.17.14",
     "vitest": "^1.4.0",
     "typescript": "^5.3.3",
     "ajv-formats": "^3.0.1"
