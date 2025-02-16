@@ -48,6 +48,9 @@ describe('Get resources response data schema', () => {
         ],
 
       },
+      import: {
+        requiredParameters: ['plugin'],
+      },
       importAndDestroy: {
         requiredProperties: ['plugin']
       },
@@ -94,6 +97,9 @@ describe('Get resources response data schema', () => {
           "typeA",
           "typeB"
         ]
+      },
+      import: {
+        requiredParameters: ['plugin'],
       },
       importAndDestroy: {
         requiredParameters: ['plugin'],

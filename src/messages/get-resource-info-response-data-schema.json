@@ -22,6 +22,17 @@
         "type": "string"
       }
     },
+    "import": {
+      "type": "object",
+      "properties": {
+        "requiredProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "importAndDestroy": {
       "type": "object",
       "properties": {
