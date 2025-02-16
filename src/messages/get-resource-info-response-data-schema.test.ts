@@ -1,7 +1,7 @@
 import schema from './get-resource-info-response-data-schema.json';
 import { describe, it, expect } from 'vitest'
 import Ajv from 'ajv'
-import {GetResourceInfoResponseData} from "../types";
+import {GetResourceInfoResponseData} from "../types.js";
 
 const ajv = new Ajv({
   strict: true,
@@ -45,7 +45,14 @@ describe('Get resources response data schema', () => {
         dependencies: [
           "typeA",
           "typeB"
-        ]
+        ],
+
+      },
+      importAndDestroy: {
+        requiredProperties: ['plugin']
+      },
+      allowMultiple: {
+        requiredProperties: ['plugin']
       }
     })).to.be.true;
 
@@ -87,6 +94,12 @@ describe('Get resources response data schema', () => {
           "typeA",
           "typeB"
         ]
+      },
+      importAndDestroy: {
+        requiredParameters: ['plugin'],
+      },
+      allowMultiple: {
+        requiredParameters: ['plugin']
       }
     }
   })

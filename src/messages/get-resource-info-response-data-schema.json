@@ -22,7 +22,7 @@
         "type": "string"
       }
     },
-    "import": {
+    "importAndDestroy": {
       "type": "object",
       "properties": {
         "requiredProperties": {
@@ -32,6 +32,18 @@
           }
         }
       }
+    },
+    "allowMultiple": {
+      "type": "object",
+      "properties": {
+        "requiredProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["requiredProperties"]
     }
   },
   "required": ["type", "plugin"]

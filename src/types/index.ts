@@ -106,8 +106,11 @@ export interface GetResourceInfoResponseData {
   type: string;
   schema?: Record<string, unknown>,
   dependencies?: string[],
-  import?: {
+  importAndDestroy?: {
     requiredParameters: string[] | null,
+  },
+  allowMultiple?: {
+    requiredParameters: string[]
   }
 }
 
