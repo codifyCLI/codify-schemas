@@ -52,6 +52,7 @@ describe('Get resources response data schema', () => {
         requiredParameters: ['plugin'],
       },
       importAndDestroy: {
+        preventImport: true,
         requiredProperties: ['plugin']
       },
       allowMultiple: {
@@ -102,6 +103,7 @@ describe('Get resources response data schema', () => {
         requiredParameters: ['plugin'],
       },
       importAndDestroy: {
+        preventImport: true,
         requiredParameters: ['plugin'],
       },
       allowMultiple: {

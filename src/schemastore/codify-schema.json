@@ -35,6 +35,7 @@
         "additionalProperties": false
       },
       {
+        "description": "Set and manage global git settings (email and username)",
         "type": "object",
         "properties": {
           "email": {
@@ -65,8 +66,7 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"git\" | Resource Schema"
+        ]
       },
       {
         "type": "object",
@@ -90,10 +90,10 @@
         },
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"xcode-tools\" | Resource Schema"
+        ]
       },
       {
+        "description": "Manages user paths. It will permanently save paths by adding them to the shell startup script.",
         "type": "object",
         "properties": {
           "path": {
@@ -131,16 +131,16 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"path\" | Resource Schema"
+        ]
       },
       {
+        "description": "Manages user aliases. It permanently saves the alias by adding it to the shell startup script.",
         "type": "object",
         "properties": {
           "alias": {
             "type": "string",
-            "pattern": "^[^ \t\n/\\$`=|&;()<>'\"]*$",
-            "description": "The path to append. This parameter cannot be used at the same time as paths"
+            "pattern": "^[^ \t\n/$`=|&;()<>'\"]*$",
+            "description": "The name of the alias"
           },
           "value": {
             "type": "string",
@@ -167,10 +167,10 @@
           "alias",
           "type"
         ],
-        "additionalProperties": false,
-        "description": "Resource type: \"alias\" | Resource Schema"
+        "additionalProperties": false
       },
       {
+        "description": "Install homebrew and manages formulae, casks and taps.",
         "type": "object",
         "properties": {
           "formulae": {
@@ -198,6 +198,10 @@
             "type": "boolean",
             "description": "Skips installing an casks which has already been installed externally. This prevents homebrew from conflicting with the existing install. Defaults to true."
           },
+          "onlyPlanUserInstalled": {
+            "type": "boolean",
+            "description": "Only consider packages that the user has explicitly specified in the plan and ignore any dependent packages"
+          },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
@@ -218,20 +222,22 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"homebrew\" | Resource Schema"
+        ]
       },
       {
         "type": "object",
+        "description": "Install and manage Python versions using pyenv.",
         "properties": {
           "pythonVersions": {
             "type": "array",
+            "description": "An array of Python versions to install using pyenv. Partial matching is supported (3.9 instead of 3.9.11)",
             "items": {
               "type": "string"
             }
           },
           "global": {
-            "type": "string"
+            "type": "string",
+            "description": "The global Python version set by pyenv."
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -253,10 +259,10 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"pyenv\" | Resource Schema"
+        ]
       },
       {
+        "description": "Installs git-lfs. This resource will automatically activate git-lfs as well.",
         "type": "object",
         "properties": {
           "name": {
@@ -279,11 +285,11 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"git-lfs\" | Resource Schema"
+        ]
       },
       {
         "type": "object",
+        "description": "Installs aws-cli.",
         "properties": {
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -305,11 +311,11 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"aws-cli\" | Resource Schema"
+        ]
       },
       {
         "type": "object",
+        "description": "Configures AWS profiles.",
         "properties": {
           "profile": {
             "type": "string",
@@ -361,35 +367,22 @@
             "type": "string"
           }
         },
-        "oneOf": [
-          {
-            "required": [
-              "awsAccessKeyId",
-              "awsSecretAccessKey",
-              "region"
-            ]
-          },
-          {
-            "required": [
-              "csvCredentials",
-              "region"
-            ]
-          }
-        ],
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"aws-profile\" | Resource Schema"
+        ]
       },
       {
+        "description": "Installs Terraform.",
         "type": "object",
         "properties": {
           "directory": {
-            "type": "string"
+            "type": "string",
+            "description": "The directory to install Terraform. Defaults to /usr/local/bin."
           },
           "version": {
-            "type": "string"
+            "type": "string",
+            "description": "The specific version of Terraform to install. Defaults to latest."
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -411,19 +404,21 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"terraform\" | Resource Schema"
+        ]
       },
       {
+        "description": "Install and manage Node versions using nvm.",
         "type": "object",
         "properties": {
           "nodeVersions": {
             "type": "array",
+            "description": "An array of node versions to install using nvm. Partial matching is supported (20 instead of 20.15.1)",
             "items": {
               "type": "string"
             }
           },
           "global": {
+            "description": "The global Node version set by nvm.",
             "type": "string"
           },
           "name": {
@@ -446,19 +441,21 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"nvm\" | Resource Schema"
+        ]
       },
       {
         "type": "object",
+        "description": "Install jenv and manage Java versions using jenv. Jenv cannot install Java directly, it needs to be installed separately and added to Jenv.",
         "properties": {
           "add": {
             "type": "array",
+            "description": "The java_home path to add to jenv. Jenv does not directly install Java. This resources optionally allows users to specify a LTS version instead of a path (8, 11, 17, 21, 22) and install it via Homebrew",
             "items": {
               "type": "string"
             }
           },
           "global": {
+            "description": "Set the global Java version using Jenv.",
             "type": "string"
           },
           "name": {
@@ -481,11 +478,11 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"jenv\" | Resource Schema"
+        ]
       },
       {
         "type": "object",
+        "description": "Installs pgcli.",
         "properties": {
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -507,15 +504,15 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"pgcli\" | Resource Schema"
+        ]
       },
       {
+        "description": "Installs Vscode.",
         "type": "object",
         "properties": {
           "directory": {
             "type": "string",
-            "description": "The installation of VSCode. This value defaults to the Applications folder",
+            "description": "The directory to install VSCode into. Defaults to /Applications.",
             "default": "/Applications"
           },
           "name": {
@@ -538,10 +535,10 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"vscode\" | Resource Schema"
+        ]
       },
       {
+        "description": "Git clone a repository. Choose either to specify the exact directory to clone into or the parent directory (it deduces the folder name using the repository name).",
         "type": "object",
         "properties": {
           "repository": {
@@ -578,33 +575,23 @@
           }
         },
         "additionalProperties": false,
-        "oneOf": [
-          {
-            "required": [
-              "repository",
-              "directory"
-            ]
-          },
-          {
-            "required": [
-              "repository",
-              "parentDirectory"
-            ]
-          }
-        ],
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"git-clone\" | Resource Schema"
+        ]
       },
       {
         "type": "object",
+        "description": "Install Android Studios.",
         "properties": {
           "version": {
             "type": "string",
             "description": "Android studios version. Visit: https://developer.android.com/studio/releases for version info"
           },
-          "directory": {},
+          "directory": {
+            "type": "string",
+            "description": "The directory to install Android Studios into. Defaults to /Applications",
+            "default": "/Applications"
+          },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
@@ -625,11 +612,11 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"android-studio\" | Resource Schema"
+        ]
       },
       {
         "type": "object",
+        "description": "Installs asdf and manages asdf plugins. Use 'asdf-install' or 'asdf-plugin' to install the actual tool. Use 'asdf-global' or 'asdf-local' to activate the tool in the shell.",
         "properties": {
           "plugins": {
             "type": "array",
@@ -658,10 +645,10 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"asdf\" | Resource Schema"
+        ]
       },
       {
+        "description": "Installs a plugin and manages specific tool versions.",
         "type": "object",
         "properties": {
           "plugin": {
@@ -700,11 +687,11 @@
           "plugin",
           "type"
         ],
-        "additionalProperties": false,
-        "description": "Resource type: \"asdf-plugin\" | Resource Schema"
+        "additionalProperties": false
       },
       {
         "type": "object",
+        "description": "Manage the asdf global version for a tool. An asdf-global or asdf-local resource must be specified before a tool installed with asdf is active in the shell.",
         "properties": {
           "plugin": {
             "type": "string",
@@ -736,10 +723,10 @@
           "version",
           "type"
         ],
-        "additionalProperties": false,
-        "description": "Resource type: \"asdf-global\" | Resource Schema"
+        "additionalProperties": false
       },
       {
+        "description": "Manage the asdf local version for a tool. An asdf-global or asdf-local resource must be specified before a tool installed with asdf is active in the shell.",
         "type": "object",
         "properties": {
           "plugin": {
@@ -783,11 +770,11 @@
           "version",
           "type"
         ],
-        "additionalProperties": false,
-        "description": "Resource type: \"asdf-local\" | Resource Schema"
+        "additionalProperties": false
       },
       {
         "type": "object",
+        "description": "Install a .tools-version file or directly install an asdf plugin + tool version.",
         "properties": {
           "plugin": {
             "type": "string",
@@ -837,10 +824,10 @@
         "additionalProperties": false,
         "required": [
           "type"
-        ],
-        "description": "Resource type: \"asdf-install\" | Resource Schema"
+        ]
       },
       {
+        "description": "Generate and manage a ssh private/public key.",
         "type": "object",
         "properties": {
           "keyType": {
@@ -895,10 +882,10 @@
           "passphrase",
           "type"
         ],
-        "additionalProperties": false,
-        "description": "Resource type: \"ssh-key\" | Resource Schema"
+        "additionalProperties": false
       },
       {
+        "description": "Configures the ssh config file.",
         "type": "object",
         "properties": {
           "hosts": {
@@ -956,19 +943,7 @@
                   "type": "boolean",
                   "description": "Specifies whether to use password authentication."
                 }
-              },
-              "oneOf": [
-                {
-                  "required": [
-                    "Host"
-                  ]
-                },
-                {
-                  "required": [
-                    "Match"
-                  ]
-                }
-              ]
+              }
             }
           },
           "name": {
@@ -992,10 +967,10 @@
           "hosts",
           "type"
         ],
-        "additionalProperties": false,
-        "description": "Resource type: \"ssh-config\" | Resource Schema"
+        "additionalProperties": false
       },
       {
+        "description": "Adds ssh private keys to the ssh agent.",
         "type": "object",
         "properties": {
           "path": {
@@ -1027,20 +1002,23 @@
           "path",
           "type"
         ],
-        "additionalProperties": false,
-        "description": "Resource type: \"ssh-add\" | Resource Schema"
+        "additionalProperties": false
       },
       {
+        "description": "Run custom scripts using the action resource. A condition can be specified to conditionally trigger a script.",
         "type": "object",
         "properties": {
           "condition": {
-            "type": "string"
+            "type": "string",
+            "description": "A condition (in bash) that decides if the action is triggered. Return 0 to trigger and any non-zero exit code to skip."
           },
           "action": {
-            "type": "string"
+            "type": "string",
+            "description": "A bash command to run."
           },
           "cwd": {
-            "type": "string"
+            "type": "string",
+            "description": "The directory that the action should be ran in."
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -1063,20 +1041,23 @@
           "action",
           "type"
         ],
-        "additionalProperties": false,
-        "description": "Resource type: \"action\" | Resource Schema"
+        "additionalProperties": false
       },
       {
+        "description": "Manages a file.",
         "type": "object",
         "properties": {
           "path": {
-            "type": "string"
+            "type": "string",
+            "description": "The location of the file."
           },
           "contents": {
-            "type": "string"
+            "type": "string",
+            "description": "The contents of the file."
           },
           "onlyCreate": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Forces the resource to only create the file if it doesn't exist but don't detect any content changes."
           },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
@@ -1100,8 +1081,7 @@
           "contents",
           "type"
         ],
-        "additionalProperties": false,
-        "description": "Resource type: \"file\" | Resource Schema"
+        "additionalProperties": false
       }
     ]
   }
