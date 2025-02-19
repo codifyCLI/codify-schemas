@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://www.codifycli.com/match-request-data-schema.json",
+  "title": "Match resources request data",
+  "type": "object",
+  "properties": {
+    "resource": {
+      "type": "object",
+      "properties": {
+        "core": {
+          "$ref": "resource-schema.json"
+        },
+        "parameters": {
+          "type": "object"
+        }
+      },
+      "required": ["core", "parameters"]
+    },
+    "array": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "core": {
+            "$ref": "resource-schema.json"
+          },
+          "parameters": {
+            "type": "object"
+          }
+        },
+        "required": ["core", "parameters"]
+      }
+    }
+  },
+  "required": ["resource", "array"]
+}

@@ -53,11 +53,9 @@ describe('Get resources response data schema', () => {
       },
       importAndDestroy: {
         preventImport: true,
-        requiredProperties: ['plugin']
+        requiredParameters: ['plugin']
       },
-      allowMultiple: {
-        requiredProperties: ['plugin']
-      }
+      allowMultiple: true,
     })).to.be.true;
 
     expect(validate({
@@ -106,9 +104,7 @@ describe('Get resources response data schema', () => {
         preventImport: true,
         requiredParameters: ['plugin'],
       },
-      allowMultiple: {
-        requiredParameters: ['plugin']
-      }
+      allowMultiple: false,
     }
   })
 
@@ -142,6 +138,12 @@ describe('Get resources response data schema', () => {
         }
       }
 
+    })).to.be.false;
+
+    expect(validate({
+      type: 'type',
+      plugin: 'core-plugin',
+      allowMultiple: {}
     })).to.be.false;
   })
 

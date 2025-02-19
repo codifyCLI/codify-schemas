@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://www.codifycli.com/match-response-data-schema.json",
+  "title": "Match resources response data",
+  "type": "object",
+  "properties": {
+    "match": {
+      "type": "object",
+      "properties": {
+        "core": {
+          "$ref": "resource-schema.json"
+        },
+        "parameters": {
+          "type": "object"
+        }
+      },
+      "required": ["core", "parameters"]
+    }
+  }
+}

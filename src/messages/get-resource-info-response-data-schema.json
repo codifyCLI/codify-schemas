@@ -36,7 +36,7 @@
     "importAndDestroy": {
       "type": "object",
       "properties": {
-        "requiredProperties": {
+        "requiredParameters": {
           "type": "array",
           "items": {
             "type": "string"
@@ -50,16 +50,7 @@
       }
     },
     "allowMultiple": {
-      "type": "object",
-      "properties": {
-        "requiredProperties": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "required": ["requiredProperties"]
+      "type": "boolean"
     }
   },
   "required": ["type", "plugin"]

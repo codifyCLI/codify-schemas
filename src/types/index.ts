@@ -104,20 +104,36 @@ export interface GetResourceInfoRequestData {
 export interface GetResourceInfoResponseData {
   plugin: string;
   type: string;
-  schema?: Record<string, unknown>,
-  dependencies?: string[],
+  schema?: Record<string, unknown>;
+  dependencies?: string[];
   /**
    * @deprecated: Use import and destroy instead.
    */
   import?: {
-    requiredParameters: string[] | null,
+    requiredParameters: string[] | null;
   },
   importAndDestroy?: {
-    requiredParameters: string[] | null,
-    preventImport?: boolean,
+    requiredParameters: string[] | null;
+    preventImport?: boolean;
   },
-  allowMultiple?: {
-    requiredParameters: string[]
+  allowMultiple: boolean;
+}
+
+export interface MatchRequestData {
+  resource: {
+    core: ResourceConfig;
+    parameters: Record<string, unknown>;
+  };
+  array: Array<{
+    core: ResourceConfig;
+    parameters: Record<string, unknown>;
+  }>
+}
+
+export interface MatchResponseData {
+  match?: {
+    core: ResourceConfig;
+    parameters: Record<string, unknown>;
   }
 }
 
@@ -127,8 +143,8 @@ export interface ImportRequestData {
 }
 
 export interface ImportResponseData {
-  request: ResourceJson
-  result: Array<ResourceJson>,
+  request: ResourceJson;
+  result: Array<ResourceJson>;
 }
 
 export interface ApplyRequestData {
