@@ -111,6 +111,11 @@
             "type": "boolean",
             "description": "Whether or not to prepend to the path."
           },
+          "declarationsOnly": {
+            "type": "boolean",
+            "default": false,
+            "description": "Only plan and manage explicitly declared paths found in shell startup scripts. This value is forced to true for stateful mode"
+          },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
@@ -139,7 +144,7 @@
         "properties": {
           "alias": {
             "type": "string",
-            "pattern": "^[^ \t\n/$`=|&;()<>'\"]*$",
+            "pattern": "^[^ \t\n/\\$`=|&;()<>'\"]*$",
             "description": "The name of the alias"
           },
           "value": {
@@ -808,19 +813,6 @@
             "type": "string"
           }
         },
-        "oneOf": [
-          {
-            "required": [
-              "plugin",
-              "versions"
-            ]
-          },
-          {
-            "required": [
-              "directory"
-            ]
-          }
-        ],
         "additionalProperties": false,
         "required": [
           "type"
