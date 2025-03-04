@@ -4,6 +4,12 @@
   "title": "Initialize Request Schema Data",
   "description": "Initialize the plugin",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "verbosityLevel": {
+      "type": "number",
+      "default": 0,
+      "description": "Initializes the plugin to return logs at a specified verbosity level with 0 being the lowest"
+    }
+  },
   "additionalProperties": false
 }

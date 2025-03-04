@@ -140,6 +140,7 @@ export interface MatchResponseData {
 export interface ImportRequestData {
   core: ResourceConfig;
   parameters: Record<string, unknown>;
+  autoSearchAll?: boolean;
 }
 
 export interface ImportResponseData {
@@ -168,7 +169,9 @@ export interface ResourceDefinition {
   dependencies: string[];
 }
 
-export interface InitializeRequestData {}
+export interface InitializeRequestData {
+  verbosityLevel?: number;
+}
 
 export interface InitializeResponseData {
   resourceDefinitions: Array<ResourceDefinition>;

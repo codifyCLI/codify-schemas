@@ -9,6 +9,11 @@
     },
     "parameters": {
       "type": "object"
+    },
+    "autoSearchAll": {
+      "type": "boolean",
+      "default": false,
+      "description": "If autoSearchAll is enabled then the resource will attempt to find all instances automatically and no input parameters are required. If it can't find anything then nothing will be returned."
     }
   },
   "required": ["core", "parameters"]
