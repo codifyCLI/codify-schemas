@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://www.codifycli.com/press-key-to-continue-request.json",
+  "title": "Sudo request",
+  "description": "Request a press key to continue prompt from the CLI",
+  "type": "object",
+  "properties": {
+    "promptMessage": {
+      "type": "string",
+      "description": "A message to display when prompting"
+    }
+  },
+  "additionalProperties": false
+}

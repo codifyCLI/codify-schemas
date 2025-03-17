@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://www.codifycli.com/sudo-request-response.json",
+  "title": "Sudo request response",
+  "description": "Response for press key to continue prompt",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}

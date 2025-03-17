@@ -20,6 +20,8 @@ import InitializeRequestDataSchema from './messages/initialize-request-data-sche
 import InitializeResponseDataSchema from './messages/initialize-response-data-schema.json' with {type: 'json'}
 import SudoRequestDataSchema from './messages/sudo-request-data-schema.json' with {type: 'json'};
 import SudoRequestResponseDataSchema from './messages/sudo-response-data-schema.json' with {type: 'json'};
+import PressKeyToContinueRequestDataSchema from './messages/press-key-to-continue-request-data-schema.json' with {type: 'json'};
+import PressKeyToContinueResponseDataSchema from './messages/press-key-to-continue-response-data-schema.json' with {type: 'json'};
 
 export {
   ConfigFileSchema,
@@ -44,6 +46,8 @@ export {
   InitializeResponseDataSchema,
   SudoRequestDataSchema,
   SudoRequestResponseDataSchema,
+  PressKeyToContinueRequestDataSchema,
+  PressKeyToContinueResponseDataSchema,
 }
 
 export * from './types/index.js';

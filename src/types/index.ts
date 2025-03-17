@@ -184,12 +184,18 @@ export interface SudoRequestData {
   } & Omit<SpawnOptions, 'stdio' | 'shell' | 'detached'>
 }
 
-export enum SpawnStatus {
-  SUCCESS = 'success',
-  ERROR = 'error',
-}
-
 export interface SudoRequestResponseData {
   status: SpawnStatus,
   data: string;
+}
+
+export interface PressKeyToContinueRequestData {
+  promptMessage?: string;
+}
+
+export interface PressKeyToContinueResponseData {}
+
+export enum SpawnStatus {
+  SUCCESS = 'success',
+  ERROR = 'error',
 }
