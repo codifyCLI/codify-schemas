@@ -575,7 +575,7 @@
             "uniqueItems": true
           },
           "type": {
-            "const": "git-clone",
+            "const": "git-repository",
             "type": "string"
           }
         },
@@ -1074,6 +1074,145 @@
           "type"
         ],
         "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "description": "Install and manage local packages with virtualenv",
+        "properties": {
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "virtualenv",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ]
+      },
+      {
+        "type": "object",
+        "description": "Install and manage local packages for a project with virtualenv",
+        "properties": {
+          "dest": {
+            "type": "string",
+            "description": "The directory to create virtualenv at"
+          },
+          "python": {
+            "type": "string",
+            "description": "A path to the python interpreter to use to create the virtualenv. This defaults to the global python3 version."
+          },
+          "noVcsIgnore": {
+            "type": "boolean",
+            "description": "Don't create VCS ignore directive in the destination directory (default: false)"
+          },
+          "systemSitePackages": {
+            "type": "boolean",
+            "description": "Give the virtual environment access to the system site-packages dir (default: false)"
+          },
+          "symlinks": {
+            "type": "boolean",
+            "description": " Try to use symlinks rather than copies (default: true)"
+          },
+          "cwd": {
+            "type": "string",
+            "description": "The cwd to create virtualenv from. This allows a relative path to be used for dest."
+          },
+          "automaticallyInstallRequirementsTxt": {
+            "type": "boolean",
+            "description": "If an requirements.txt is available in the cwd, automatically install it when a virtual env is first created."
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "virtualenv-project",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "dest",
+          "type"
+        ]
+      },
+      {
+        "description": "Install and manage Node versions using nvm.",
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "A specific version of pnpm to install. (defaults to the latest)"
+          },
+          "globalEnvNodeVersion": {
+            "type": "string",
+            "description": "Set the global node version. Corresponds to pnpm env --global use"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "pnpm",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "wait-github-ssh-key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
       }
     ]
   }
