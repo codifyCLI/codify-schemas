@@ -1157,7 +1157,7 @@
         ]
       },
       {
-        "description": "Install and manage Node versions using nvm.",
+        "description": "Install and manage Node dependencies and versions using pnpm.",
         "type": "object",
         "properties": {
           "version": {
