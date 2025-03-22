@@ -35,40 +35,6 @@
         "additionalProperties": false
       },
       {
-        "description": "Set and manage global git settings (email and username)",
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The global email to set for git"
-          },
-          "username": {
-            "type": "string",
-            "description": "The global username to set for git"
-          },
-          "name": {
-            "description": "Optional name. Useful for specifying multiple resources of the same type",
-            "type": "string",
-            "pattern": "^[\\w-]+$"
-          },
-          "dependsOn": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "uniqueItems": true
-          },
-          "type": {
-            "const": "git",
-            "type": "string"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "type"
-        ]
-      },
-      {
         "type": "object",
         "properties": {
           "name": {
@@ -1211,6 +1177,175 @@
           }
         },
         "required": [
+          "type"
+        ]
+      },
+      {
+        "type": "object",
+        "description": "Install and manage local packages for a project with venv",
+        "properties": {
+          "envDir": {
+            "type": "string",
+            "description": "A directory to create the environment in."
+          },
+          "systemSitePackages": {
+            "type": "boolean",
+            "description": "Give the virtual environment access to the system site-packages dir."
+          },
+          "symlinks": {
+            "type": "boolean",
+            "description": "Try to use symlinks rather than copies, when symlinks are not the default for the platform."
+          },
+          "copies": {
+            "type": "boolean",
+            "description": "Delete the contents of the environment directory if it already exists, before environment creation."
+          },
+          "clear": {
+            "type": "boolean",
+            "description": "Try to use symlinks rather than copies (default: true)."
+          },
+          "upgrade": {
+            "type": "boolean",
+            "description": "Upgrade the environment directory to use this version of Python, assuming Python has been upgraded in-place."
+          },
+          "withoutPip": {
+            "type": "boolean",
+            "description": "Skips installing or upgrading pip in the virtual environment (pip is bootstrapped by default)."
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Provides an alternative prompt prefix for this environment."
+          },
+          "upgradeDeps": {
+            "type": "boolean",
+            "description": "Upgrade core dependencies: pip setuptools to the latest version in PyPI."
+          },
+          "cwd": {
+            "type": "string",
+            "description": "The cwd to create virtualenv from. This allows a relative path to be used for dest."
+          },
+          "automaticallyInstallRequirementsTxt": {
+            "type": "boolean",
+            "description": "If an requirements.txt is available in the cwd, automatically install it when a virtual env is first created."
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "venv-project",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "envDir",
+          "type"
+        ]
+      },
+      {
+        "type": "object",
+        "description": "Install and manage packages using pip",
+        "properties": {
+          "virtualEnv": {
+            "type": "string",
+            "description": "A virtual env to activate before issuing pip commands."
+          },
+          "install": {
+            "type": "array",
+            "description": "Packages to install.",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              ]
+            }
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "pip",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "install",
+          "type"
+        ]
+      },
+      {
+        "type": "object",
+        "description": "Install and manage though pip-tools by installing + uninstalling packages using pip-sync",
+        "properties": {
+          "virtualEnv": {
+            "type": "string",
+            "description": "A virtual env to activate before issuing commands."
+          },
+          "requirementFiles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "A list of requirement files to supply pip-sync."
+          },
+          "cwd": {
+            "type": "string",
+            "description": "The working directory to run commands from. If cwd is supplied, the other parameters can be specified as relative to cwd."
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "pip-sync",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "requirementFiles",
           "type"
         ]
       }
