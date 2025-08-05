@@ -36,14 +36,13 @@ async function main() {
 
     const { id: resourceId } = resourceRow.data![0];
 
-    console.log(`Adding parameters for resource ${type}`)
     const parameters = Object.entries(resource.properties)
       .filter(([k]) => k !== 'type')
       .map(([key, property]) => ({
         type: property.type,
         name: key,
         resource_id: resourceId,
-        schema: JSON.stringify(property),
+        schema: property,
       }))
 
     await client.from('registry_resource_parameters').upsert(parameters, {onConflict: ['name', 'resource_id']});

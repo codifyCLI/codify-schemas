@@ -35,6 +35,40 @@
         "additionalProperties": false
       },
       {
+        "description": "Set and manage global git settings (email and username)",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The global email to set for git"
+          },
+          "username": {
+            "type": "string",
+            "description": "The global username to set for git"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "git",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ]
+      },
+      {
         "type": "object",
         "properties": {
           "name": {
@@ -901,7 +935,19 @@
                   "type": "boolean",
                   "description": "Specifies whether to use password authentication."
                 }
-              }
+              },
+              "oneOf": [
+                {
+                  "required": [
+                    "Host"
+                  ]
+                },
+                {
+                  "required": [
+                    "Match"
+                  ]
+                }
+              ]
             }
           },
           "name": {
@@ -1284,6 +1330,13 @@
               ]
             }
           },
+          "installFiles": {
+            "description": "A list of requirement files to install.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "name": {
             "description": "Optional name. Useful for specifying multiple resources of the same type",
             "type": "string",
@@ -1346,6 +1399,111 @@
         "additionalProperties": false,
         "required": [
           "requirementFiles",
+          "type"
+        ]
+      },
+      {
+        "description": "Install macports and manage packages.",
+        "type": "object",
+        "properties": {
+          "install": {
+            "type": "array",
+            "description": "Installs packages.",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              ]
+            }
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "macports",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ]
+      },
+      {
+        "description": "Install and manage packages using NPM.",
+        "type": "object",
+        "properties": {
+          "globalInstall": {
+            "type": "array",
+            "description": "An array of",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "description": "Npm packages to install globally"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the package to install"
+                    },
+                    "version": {
+                      "type": "string",
+                      "description": "The version of package to install"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              ]
+            }
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "npm",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
           "type"
         ]
       }
