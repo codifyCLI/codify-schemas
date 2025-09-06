@@ -1506,6 +1506,40 @@
         "required": [
           "type"
         ]
+      },
+      {
+        "type": "object",
+        "description": "Installs docker.",
+        "properties": {
+          "acceptLicense": {
+            "type": "boolean",
+            "description": "Accepts the license agreement. Defaults to true"
+          },
+          "useCurrentUser": {
+            "type": "boolean",
+            "description": "Use the current user to install docker. Defaults to true"
+          },
+          "name": {
+            "description": "Optional name. Useful for specifying multiple resources of the same type",
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "type": {
+            "const": "docker",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ]
       }
     ]
   }
