@@ -1,6 +1,8 @@
-import 'dotenv/config'
+import dotenv from 'dotenv'
 import CodifySchema from '../src/schemastore/codify-schema.json' with {type: 'json'}
 import {createClient} from "@supabase/supabase-js";
+
+dotenv.config({ path: '../.env' })
 
 /**
  * This is an upload script to upload new resources. Update the codify-schema.json file and
@@ -8,8 +10,8 @@ import {createClient} from "@supabase/supabase-js";
  */
 
 const client = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!,
 );
 
 async function main() {
@@ -17,7 +19,8 @@ async function main() {
   const defaultPlugin = await client.from('registry_plugins').upsert({
     name: 'default',
   }, {onConflict: 'name'})
-    .select();
+    .select()
+    .throwOnError();
 
   const { id: pluginId, name: pluginName } = defaultPlugin.data![0];
   const resources = CodifySchema.items.oneOf;
