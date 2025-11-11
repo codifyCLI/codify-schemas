@@ -34,6 +34,7 @@ async function main() {
       plugin_id: pluginId,
       plugin_name: pluginName,
       schema: JSON.stringify(resource),
+      documentation_url: resource.$comment,
     }, {onConflict: ['type', 'plugin_id']})
       .select();
 
