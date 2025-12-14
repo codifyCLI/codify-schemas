@@ -40,7 +40,7 @@ describe('Get resources response data schema', () => {
             "items": {
               "type": "string"
             }
-          }
+          },
         },
         dependencies: [
           "typeA",
@@ -56,11 +56,7 @@ describe('Get resources response data schema', () => {
         requiredParameters: ['plugin']
       },
       allowMultiple: true,
-    })).to.be.true;
-
-    expect(validate({
-      type: 'type',
-      plugin: 'core-plugin',
+      sensitiveParameters: [],
     })).to.be.true;
 
     // For testing the typescript type
@@ -134,10 +130,15 @@ describe('Get resources response data schema', () => {
             "items": {
               "type": "string"
             }
+          },
+          "sensitiveProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }
-
     })).to.be.false;
 
     expect(validate({

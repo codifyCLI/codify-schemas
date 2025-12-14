@@ -18,6 +18,12 @@
             "items": {
               "type": "string"
             }
+          },
+          "sensitiveParameters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [

@@ -36,6 +36,7 @@ describe('Apply request data schema', () => {
           operation: ParameterOperation.ADD,
           newValue: 'abc',
           previousValue: null,
+          isSensitive: false,
         }]
       }
     } as ApplyRequestData)).to.be.true;

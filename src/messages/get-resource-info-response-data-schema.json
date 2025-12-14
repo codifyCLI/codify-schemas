@@ -49,6 +49,12 @@
         }
       }
     },
+    "sensitiveParameters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "allowMultiple": {
       "type": "boolean"
     }

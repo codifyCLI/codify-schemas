@@ -22,6 +22,7 @@ describe('Get resources response data schema', () => {
         {
           type: 'typeB',
           dependencies: [],
+          sensitiveParameters: ['paramA', 'paramB'],
         }
       ]
     })).to.be.true;

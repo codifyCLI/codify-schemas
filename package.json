@@ -1,6 +1,6 @@
 {
   "name": "codify-schemas",
-  "version": "1.0.77",
+  "version": "1.0.83",
   "description": "",
   "type": "module",
   "main": "dist/index.js",

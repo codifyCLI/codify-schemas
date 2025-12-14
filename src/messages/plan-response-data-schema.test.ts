@@ -27,7 +27,8 @@ describe('Plan response data schema', () => {
         name: 'parameter1',
         operation: ParameterOperation.ADD,
         previousValue: null,
-        newValue: 'abc'
+        newValue: 'abc',
+        isSensitive: false,
       }]
     } as PlanResponseData)).to.be.true;
   })

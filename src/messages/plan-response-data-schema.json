@@ -46,6 +46,10 @@
           },
           "newValue": {
             "description": "The new value"
+          },
+          "isSensitive": {
+            "description": "Indicates if the parameter is sensitive",
+            "type": "boolean"
           }
         },
         "required": ["name", "operation", "previousValue", "newValue"]

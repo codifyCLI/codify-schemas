@@ -94,6 +94,7 @@ export interface PlanResponseData {
     operation: ParameterOperation;
     previousValue: unknown | null;
     newValue: unknown | null;
+    isSensitive?: boolean;
   }>
 }
 
@@ -116,6 +117,7 @@ export interface GetResourceInfoResponseData {
     requiredParameters: string[] | null;
     preventImport?: boolean;
   },
+  sensitiveParameters?: string[];
   allowMultiple: boolean;
 }
 
@@ -160,6 +162,7 @@ export interface ApplyRequestData {
       operation: ParameterOperation;
       newValue: unknown | null;
       previousValue: unknown | null;
+      isSensitive?: boolean;
     }>
   }
 }
@@ -167,6 +170,7 @@ export interface ApplyRequestData {
 export interface ResourceDefinition {
   type: string;
   dependencies: string[];
+  sensitiveParameters?: string[];
 }
 
 export interface InitializeRequestData {
