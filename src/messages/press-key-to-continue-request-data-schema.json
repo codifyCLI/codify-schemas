@@ -9,6 +9,5 @@
       "type": "string",
       "description": "A message to display when prompting"
     }
-  },
-  "additionalProperties": false
+  }
 }

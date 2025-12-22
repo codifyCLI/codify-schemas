@@ -34,6 +34,5 @@
         "required": ["resourceType", "isValid", "schemaValidationErrors"]
       }
     }
-  },
-  "additionalProperties": false
+  }
 }

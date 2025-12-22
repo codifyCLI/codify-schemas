@@ -2,18 +2,21 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://www.codifycli.com/sudo-request-response.json",
   "title": "Sudo request response",
-  "description": "Response for a sudo request",
+  "description": "Response for a request to run a command on the base CLI (sudo, interactive, etc)",
   "type": "object",
   "properties": {
     "status": {
       "enum": ["success", "error"],
       "description": "Reports if the operation was successful"
     },
+    "exitCode": {
+      "type": "integer",
+      "description": "The exit code of running the command"
+    },
     "data": {
       "type": "string",
       "description": "Data returned by the operation"
     }
   },
-  "required": ["status", "data"],
-  "additionalProperties": false
+  "required": ["status", "exitCode", "data"]
 }

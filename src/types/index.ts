@@ -113,6 +113,7 @@ export interface GetResourceInfoResponseData {
   import?: {
     requiredParameters: string[] | null;
   },
+  operatingSystems?: OS[];
   importAndDestroy?: {
     requiredParameters: string[] | null;
     preventImport?: boolean;
@@ -170,6 +171,7 @@ export interface ApplyRequestData {
 export interface ResourceDefinition {
   type: string;
   dependencies: string[];
+  operatingSystems?: OS[];
   sensitiveParameters?: string[];
 }
 
@@ -181,15 +183,22 @@ export interface InitializeResponseData {
   resourceDefinitions: Array<ResourceDefinition>;
 }
 
-export interface SudoRequestData {
+export enum CommandRequestType {
+  SUDO = 'sudo',
+  INTERACTIVE = 'interactive'
+}
+
+export interface CommandRequestData {
   command: string;
+  type: CommandRequestType,
   options: {
     cwd?: string;
   } & Omit<SpawnOptions, 'stdio' | 'shell' | 'detached'>
 }
 
-export interface SudoRequestResponseData {
+export interface CommandRequestResponseData {
   status: SpawnStatus,
+  exitCode: number;
   data: string;
 }
 
@@ -202,4 +211,10 @@ export interface PressKeyToContinueResponseData {}
 export enum SpawnStatus {
   SUCCESS = 'success',
   ERROR = 'error',
+}
+
+export enum OS {
+  Darwin = 'Darwin',
+  Linux = 'Linux',
+  Windows = 'Windows_NT',
 }

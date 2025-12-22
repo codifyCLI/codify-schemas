@@ -10,6 +10,5 @@
       "default": 0,
       "description": "Initializes the plugin to return logs at a specified verbosity level with 0 being the lowest"
     }
-  },
-  "additionalProperties": false
+  }
 }

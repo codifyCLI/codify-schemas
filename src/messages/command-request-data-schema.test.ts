@@ -1,4 +1,4 @@
-import schema from './sudo-request-data-schema.json';
+import schema from './command-request-data-schema.json';
 import {describe, expect, it} from 'vitest'
 import Ajv from 'ajv'
 
@@ -14,7 +14,8 @@ describe('Get resources response data schema', () => {
   it("Passes a command in the body", () => {
     const validate = ajv.compile(schema);
     expect(validate({
-      command: 'abc def'
+      command: 'abc def',
+      type: 'sudo'
     })).to.be.true;
   })
 
@@ -22,6 +23,7 @@ describe('Get resources response data schema', () => {
     const validate = ajv.compile(schema);
     expect(validate({
       command: 'abc def',
+      type: 'interactive',
       options: {
         cwd: '.',
       }
@@ -32,6 +34,7 @@ describe('Get resources response data schema', () => {
     const validate = ajv.compile(schema);
     expect(validate({
       command: 'abc def',
+      type: 'sudo',
       options: {
         cwd: '.',
         requiresRoot: true,
@@ -44,6 +47,7 @@ describe('Get resources response data schema', () => {
     const validate = ajv.compile(schema);
     expect(validate({
       command: 'abc def',
+      type: 'interactive',
       options: {
         cwd: '.',
       },

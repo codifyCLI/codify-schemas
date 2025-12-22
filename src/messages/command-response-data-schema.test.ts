@@ -1,4 +1,4 @@
-import schema from './sudo-response-data-schema.json';
+import schema from './command-response-data-schema.json';
 import {describe, expect, it} from 'vitest'
 import Ajv from 'ajv'
 
@@ -15,6 +15,7 @@ describe('Get resources response data schema', () => {
     const validate = ajv.compile(schema);
     expect(validate({
       status: 'success',
+      exitCode: 0,
       data: 'sudo: was a success'
     })).to.be.true;
   })
@@ -23,6 +24,7 @@ describe('Get resources response data schema', () => {
     const validate = ajv.compile(schema);
     expect(validate({
       status: 'error',
+      exitCode: 100,
       data: 'sudo: failed'
     })).to.be.true;
   })

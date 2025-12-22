@@ -82,8 +82,7 @@
           "required": ["operation", "resourceType", "parameters", "isStateful"]
         }
       },
-      "required": ["plan"],
-      "additionalProperties": false
+      "required": ["plan"]
     }
   ]
 }

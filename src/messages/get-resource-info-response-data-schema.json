@@ -22,6 +22,12 @@
         "type": "string"
       }
     },
+    "operatingSystems": {
+      "type": "array",
+      "items": {
+        "enum": ["Darwin", "Linux", "Windows_NT"]
+      }
+    },
     "import": {
       "type": "object",
       "properties": {

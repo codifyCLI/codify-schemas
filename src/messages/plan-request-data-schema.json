@@ -20,7 +20,6 @@
       "description": "If the plan is stateful"
     }
   },
-  "additionalProperties": false,
   "anyOf": [
     { "required": ["core", "desired", "isStateful"] },
     { "required": ["core", "state", "isStateful"] }
