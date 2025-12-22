@@ -18,8 +18,8 @@ import ValidateRequestDataSchema from './messages/validate-request-data-schema.j
 import ValidateResponseDataSchema from './messages/validate-response-data-schema.json' with {type: 'json'}
 import InitializeRequestDataSchema from './messages/initialize-request-data-schema.json' with {type: 'json'}
 import InitializeResponseDataSchema from './messages/initialize-response-data-schema.json' with {type: 'json'}
-import SudoRequestDataSchema from './messages/command-request-data-schema.json' with {type: 'json'};
-import SudoRequestResponseDataSchema from './messages/command-response-data-schema.json' with {type: 'json'};
+import CommandRequestDataSchema from './messages/command-request-data-schema.json' with {type: 'json'};
+import CommandRequestResponseDataSchema from './messages/command-response-data-schema.json' with {type: 'json'};
 import PressKeyToContinueRequestDataSchema from './messages/press-key-to-continue-request-data-schema.json' with {type: 'json'};
 import PressKeyToContinueResponseDataSchema from './messages/press-key-to-continue-response-data-schema.json' with {type: 'json'};
 
@@ -44,8 +44,8 @@ export {
   ValidateResponseDataSchema,
   InitializeRequestDataSchema,
   InitializeResponseDataSchema,
-  SudoRequestDataSchema,
-  SudoRequestResponseDataSchema,
+  CommandRequestDataSchema,
+  CommandRequestResponseDataSchema,
   PressKeyToContinueRequestDataSchema,
   PressKeyToContinueResponseDataSchema,
 }
