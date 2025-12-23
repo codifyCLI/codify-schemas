@@ -183,16 +183,13 @@ export interface InitializeResponseData {
   resourceDefinitions: Array<ResourceDefinition>;
 }
 
-export enum CommandRequestType {
-  SUDO = 'sudo',
-  INTERACTIVE = 'interactive'
-}
-
 export interface CommandRequestData {
   command: string;
-  type: CommandRequestType,
   options: {
     cwd?: string;
+    interactive?: boolean;
+    requiresRoot?: boolean;
+    stdin?: boolean;
   } & Omit<SpawnOptions, 'stdio' | 'shell' | 'detached'>
 }
 
