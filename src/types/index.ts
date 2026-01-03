@@ -1,5 +1,5 @@
-import { SpawnOptions } from "node:child_process";
-import { ErrorObject } from "ajv";
+import type {SpawnOptions} from "node:child_process";
+import type {ErrorObject} from "ajv";
 
 export interface StringIndexedObject {
   [x: string]: unknown;
@@ -15,9 +15,16 @@ export interface ProjectConfig extends Config {
   description?: string;
 }
 
+export enum ResourceOs {
+  LINUX = 'linux',
+  MACOS = 'macOS',
+  WINDOWS = 'windows',
+}
+
 export interface ResourceConfig extends Config {
   name?: string;
   dependsOn?: string[];
+  os?: Array<ResourceOs>;
 }
 
 export enum MessageStatus {
@@ -204,6 +211,10 @@ export interface PressKeyToContinueRequestData {
 }
 
 export interface PressKeyToContinueResponseData {}
+
+export interface SetVerbosityRequestData {
+  verbosityLevel: number;
+}
 
 export enum SpawnStatus {
   SUCCESS = 'success',

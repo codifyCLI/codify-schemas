@@ -22,6 +22,7 @@ import CommandRequestDataSchema from './messages/command-request-data-schema.jso
 import CommandRequestResponseDataSchema from './messages/command-response-data-schema.json' with {type: 'json'};
 import PressKeyToContinueRequestDataSchema from './messages/press-key-to-continue-request-data-schema.json' with {type: 'json'};
 import PressKeyToContinueResponseDataSchema from './messages/press-key-to-continue-response-data-schema.json' with {type: 'json'};
+import SetVerbosityRequestDataSchema from './messages/set-verbosity-request-data-schema.json' with {type: 'json'};
 
 export {
   ConfigFileSchema,
@@ -48,6 +49,7 @@ export {
   CommandRequestResponseDataSchema,
   PressKeyToContinueRequestDataSchema,
   PressKeyToContinueResponseDataSchema,
+  SetVerbosityRequestDataSchema,
 }
 
 export * from './types/index.js';
