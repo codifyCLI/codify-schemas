@@ -4,7 +4,6 @@ import ResourceSchema from './resource-schema.json' with {type: 'json'}
 import IpcMessageSchema from './ipc-message-schema.json' with {type: 'json'}
 import IpcMessageV2Schema from './ipc-message-schema-v2.json' with {type: 'json'}
 import ApplyRequestDataSchema from './messages/apply-request-data-schema.json' with {type: 'json'}
-import ApplyResponseDataSchema from './messages/apply-response-data-schema.json' with {type: 'json'}
 import ErrorResponseDataSchema from './messages/error-response-data-schema.json' with {type: 'json'}
 import GetResourceInfoRequestDataSchema from './messages/get-resource-info-request-data-schema.json' with {type: 'json'}
 import GetResourceInfoResponseDataSchema from './messages/get-resource-info-response-data-schema.json' with {type: 'json'}
@@ -23,6 +22,7 @@ import CommandRequestResponseDataSchema from './messages/command-response-data-s
 import PressKeyToContinueRequestDataSchema from './messages/press-key-to-continue-request-data-schema.json' with {type: 'json'};
 import PressKeyToContinueResponseDataSchema from './messages/press-key-to-continue-response-data-schema.json' with {type: 'json'};
 import SetVerbosityRequestDataSchema from './messages/set-verbosity-request-data-schema.json' with {type: 'json'};
+import EmptyResponseDataSchema from './messages/empty-response-data-schema.json' with {type: 'json'};
 
 export {
   ConfigFileSchema,
@@ -31,7 +31,6 @@ export {
   IpcMessageSchema,
   IpcMessageV2Schema,
   ApplyRequestDataSchema,
-  ApplyResponseDataSchema,
   ErrorResponseDataSchema,
   GetResourceInfoRequestDataSchema,
   GetResourceInfoResponseDataSchema,
@@ -50,6 +49,7 @@ export {
   PressKeyToContinueRequestDataSchema,
   PressKeyToContinueResponseDataSchema,
   SetVerbosityRequestDataSchema,
+  EmptyResponseDataSchema,
 }
 
 export * from './types/index.js';

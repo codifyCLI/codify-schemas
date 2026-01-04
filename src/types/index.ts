@@ -216,6 +216,8 @@ export interface SetVerbosityRequestData {
   verbosityLevel: number;
 }
 
+export interface EmptyResponseData {}
+
 export enum SpawnStatus {
   SUCCESS = 'success',
   ERROR = 'error',
